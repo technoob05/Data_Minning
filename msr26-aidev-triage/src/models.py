@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split, GroupShuffleSplit
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score, average_precision_score, brier_score_loss
 import shap
 
-def train_lgbm_model(df: pd.DataFrame, feature_cols: list, target_col: str = "is_merged", filter_instant: bool = True):
+def train_lgbm_model(df: pd.DataFrame, feature_cols: list, target_col: str = "is_merged", filter_instant: bool = True, extra_params: dict = None):
     """
     Trains a LightGBM model to predict PR acceptance.
     """
@@ -48,6 +48,9 @@ def train_lgbm_model(df: pd.DataFrame, feature_cols: list, target_col: str = "is
         "verbose": -1
     }
     
+    if extra_params:
+        params.update(extra_params)
+    
     # Train
     model = lgb.train(
         params,
@@ -73,7 +76,7 @@ def train_lgbm_model(df: pd.DataFrame, feature_cols: list, target_col: str = "is
     
     print("Model Metrics:", metrics)
     
-    return model, metrics, X_test
+    return model, metrics, X_test, y_test
 
 def explain_model(model, X_test):
     """

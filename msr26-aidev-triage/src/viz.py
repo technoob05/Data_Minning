@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import shap
+from sklearn.calibration import calibration_curve
 
 def plot_acceptance_rate(metrics_df: pd.DataFrame, output_path: str):
     """
@@ -112,6 +113,27 @@ def plot_ghosting_rate(df: pd.DataFrame, output_path: str):
     plt.title("Ghosting Rate by Agent (Wasted Effort)")
     plt.ylabel("Ghosting Rate (% of PRs)")
     plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.savefig(output_path)
+    plt.tight_layout()
+    plt.savefig(output_path)
+    plt.close()
+
+def plot_calibration_curve(y_true, y_prob, output_path: str):
+    """
+    Plots the calibration curve.
+    """
+    prob_true, prob_pred = calibration_curve(y_true, y_prob, n_bins=10)
+    
+    plt.figure(figsize=(8, 8))
+    plt.plot(prob_pred, prob_true, marker='o', linewidth=2, label='Model')
+    plt.plot([0, 1], [0, 1], linestyle='--', label='Perfectly Calibrated')
+    
+    plt.title("Calibration Curve")
+    plt.xlabel("Mean Predicted Probability")
+    plt.ylabel("Fraction of Positives")
+    plt.legend()
+    plt.grid(True, alpha=0.3)
     plt.tight_layout()
     plt.savefig(output_path)
     plt.close()

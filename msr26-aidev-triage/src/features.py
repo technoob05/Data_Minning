@@ -28,6 +28,7 @@ def engineer_features(df: pd.DataFrame) -> pd.DataFrame:
     feat_df["has_checklist"] = feat_df["body"].str.contains("- \[ \]", regex=False).astype(int) | \
                                feat_df["body"].str.contains("- \[x\]", regex=False).astype(int)
     feat_df["links_issue"] = feat_df["body"].str.contains("#\d+", regex=True).astype(int)
+    feat_df["has_plan"] = feat_df["body"].str.contains(r"plan|steps|reproduce|expected|why|context", regex=True, case=False).astype(int)
     
     # 3. Interaction Features
     # (Already have num_commits, num_reviews, num_comments, num_review_comments)
@@ -58,9 +59,32 @@ def engineer_features(df: pd.DataFrame) -> pd.DataFrame:
     effort_threshold = feat_df["effort_score"].quantile(0.80)
     feat_df["is_high_cost"] = (feat_df["effort_score"] >= effort_threshold).astype(int)
     
-    # Target 2: Ghosting (Rejected but had effort)
+    # Target 2: Rejected with Effort (Old Ghosting)
     # Definition: Rejected AND (num_comments > 0 OR num_reviews > 0)
-    feat_df["is_ghosted"] = ((feat_df["status"] == "rejected") & (feat_df["effort_score"] > 0)).astype(int)
+    feat_df["rejected_with_effort"] = ((feat_df["status"] == "rejected") & (feat_df["effort_score"] > 0)).astype(int)
+
+    # Target 3: True Ghosting
+    # Definition: Rejected AND (Has Human Feedback) AND (No Follow-up OR Follow-up > 14 days later)
+    if "first_human_feedback_at" in feat_df.columns:
+        rejected = (feat_df["status"] == "rejected")
+        has_feedback = feat_df["first_human_feedback_at"].notna()
+        
+        # Check follow-up
+        if "first_followup_commit_at" in feat_df.columns:
+             no_followup = feat_df["first_followup_commit_at"].isna()
+             
+             # Time delta
+             delta = (feat_df["first_followup_commit_at"] - feat_df["first_human_feedback_at"]).dt.total_seconds() / 86400.0
+             late_followup = delta > 14
+             
+             feat_df["is_ghosted"] = (rejected & has_feedback & (no_followup | late_followup)).astype(int)
+        else:
+             # Fallback if no follow-up info
+             feat_df["is_ghosted"] = 0
+             print("Warning: first_followup_commit_at not found. is_ghosted set to 0.")
+    else:
+        feat_df["is_ghosted"] = 0
+        print("Warning: first_human_feedback_at not found. is_ghosted set to 0.")
     
     # Legacy Target: is_merged
     feat_df["is_merged"] = (feat_df["status"] == "merged").astype(int)
@@ -96,11 +120,14 @@ def get_feature_columns():
         "created_hour",
         "created_dayofweek",
         "is_weekend",
-        # New NLP Features
         "mentions_tests",
         "has_checklist",
         "links_issue",
+        "has_plan",
         # New Diff Features
         "touches_tests",
-        "touches_docs"
+        "touches_docs",
+        "touches_ci",
+        "touches_deps",
+        "touches_config"
     ]

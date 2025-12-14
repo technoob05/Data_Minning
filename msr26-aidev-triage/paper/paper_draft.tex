@@ -1,0 +1,160 @@
+\documentclass[sigconf,review,anonymous]{acmart}
+\acmConference[MSR 2026]{MSR '26: Proceedings of the 23rd International Conference on Mining Software Repositories}{April 2026}{Rio de Janeiro, Brazil}
+
+\settopmatter{printacmref=false}
+\renewcommand\footnotetextcopyrightpermission[1]{} % removes footnote with conference info
+\setcopyright{none}
+\copyrightyear{2026}
+\acmYear{2026}
+\acmDOI{None}
+
+\begin{document}
+
+\title{Ghosting in the Machine: Predicting Wasted Review Effort in AI-Generated Pull Requests}
+
+\author{Anonymous Author(s)}
+\affiliation{
+  \institution{MSR 2026 Mining Challenge}
+  \country{Brazil}
+}
+\email{anonymous@example.com}
+
+\renewcommand{\shortauthors}{Anonymous et al.}
+
+\begin{abstract}
+The emergence of autonomous coding agents has introduced a new dynamic in software engineering: ``AI Teammates'' that independently author Pull Requests (PRs). While promising, these agents introduce unique risks, particularly ``ghosting''---where an agent submits code, receives human requests for changes, but fails to follow up. Using a curated subset of 33,596 Agentic-PRs from the AIDev dataset (derived from 932k total events), we propose a rigorous timeline-based definition of ``True Ghosting.'' We engineer features capturing agent intent (e.g., presence of a plan) and complexity. Our LightGBM models achieve an AUC of 0.84 for identifying high-cost PRs, significantly outperforming a Logistic Regression baseline (AUC 0.64). We find that PRs modifying critical configuration files are significantly more prone to abandonment, and that under strict time thresholds (7/14/30 days), rejected agentic PRs show a near 100\% abandonment rate. These insights enable automated triage policies to prioritize high-quality agentic contributions.
+\end{abstract}
+
+\begin{CCSXML}
+<ccs2012>
+ <concept>
+  <concept_id>10011007.10011074.10011111.10011113</concept_id>
+  <concept_desc>Software and its engineering~Software evolution</concept_desc>
+  <concept_significance>500</concept_significance>
+ </concept>
+</ccs2012>
+\end{CCSXML}
+
+\ccsdesc[500]{Software and its engineering~Software evolution}
+
+\keywords{AI Agents, Triage, Ghosting, Mining Software Repositories}
+
+\maketitle
+
+\section{Introduction}
+As AI coding agents transition from assistants to active ``teammates'' \cite{li2025aiteammates}, a major friction point is the varying quality of ``Agentic-PRs.'' Unlike human contributors, early autonomous agents may ``ghost'' maintainers---abandoning PRs after receiving complex feedback (Figure \ref{fig:ghosting_rate}).
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{ghosting_rate.png}
+  \caption{Ghosting Rate by Agent. Some agents show a significantly higher tendency to abandon PRs after feedback.}
+  \Description{Bar chart showing ghosting rates for different AI agents.}
+  \label{fig:ghosting_rate}
+\end{figure}
+
+We address the MSR 2026 Mining Challenge by asking:
+\begin{itemize}
+    \item \textbf{RQ1}: Can we predict \textit{High Cost} and \textit{Ghosted} PRs at submission time?
+    \item \textbf{RQ2}: What behavioral cues signal a high risk of abandonment?
+\end{itemize}
+
+We contribute a predictive triage model (AUC 0.84) and an actionable policy for maintaining human-AI collaboration hygiene.
+
+\section{Methodology}
+
+\subsection{Dataset \& Definitions}
+We filter the AIDev dataset \cite{li2025aiteammates} for PRs authored by 5 agents (Claude, Copilot, Cursor, Devin, Codex), resulting in 33,596 PRs. We exclude ``Instant Merges'' ($<1$ min turnaround) from behavioral analysis to avoid skewing latency metrics (Figure \ref{fig:instant}).
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{instant_merges.png}
+  \caption{Instant Merges ($<1$ min) by Agent. A significant portion of agent activity is automated, zero-latency merging.}
+  \Description{Bar chart of instant merges.}
+  \label{fig:instant}
+\end{figure}
+
+\begin{table}[h]
+  \caption{Operational Definitions of Target Variables}
+  \label{tab:definitions}
+  \begin{tabular}{lp{5.5cm}}
+    \toprule
+    \textbf{Target} & \textbf{Definition} \\
+    \midrule
+    \textbf{High Cost} & Top 20\% of PRs by \textit{Effort Score} (Sum of human reviews and comments) in the training set. \\
+    \textbf{True Ghosting} & PR Status = Rejected AND Received Human Feedback AND No follow-up commit $>14$ days after feedback. \\
+    \bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Modeling Setup}
+We use a **Repo-Disjoint Split**: PRs from the same repository appear ONLY in train or test, ensuring the model learns general agent behaviors rather than repo-specific project norms.
+We train **LightGBM** classifiers with class balancing and compare against two baselines:
+\begin{enumerate}
+    \item **Logistic Regression (LR)**: Trained on the same feature set.
+    \item **Simple Rule**: Predict "High Risk" if `touches_ci=1` OR `touches_deps=1`.
+\end{enumerate}
+
+\section{Results}
+
+\subsection{Model Performance}
+LightGBM consistently outperforms baselines (Table \ref{tab:baselines}), confirming that agent triage requires non-linear combinations of features.
+
+\begin{table}[h]
+  \caption{Model Performance vs Baselines (AUC)}
+  \label{tab:baselines}
+  \begin{tabular}{lcc}
+    \toprule
+    Model & High Cost & True Ghosting \\
+    \midrule
+    Rule Baseline (Complexity) & 0.53 & 0.50 \\
+    Logistic Regression & 0.64 & 0.63 \\
+    \textbf{LightGBM (Ours)} & \textbf{0.84} & \textbf{0.66} \\
+    \bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Triage Utility}: Figure \ref{fig:topk} demonstrates that reviewing just the top 20\% of predicted high-risk PRs captures over 60\% of the total review effort. This allows maintainers to prioritize their limited attention.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{topk_coverage.png}
+  \caption{Top-K Triage Utility. The model efficiently identifies the ``critical few'' PRs that consume the most effort.}
+  \Description{Cumulative gain chart.}
+  \label{fig:topk}
+\end{figure}
+
+\subsection{Risk Factors & Failure Modes}
+\textbf{Complexity drives Risk}: SHAP analysis (Figure \ref{fig:shap}) confirms that `touches_ci` and `touches_deps` are primary drivers of ghosting. Agents struggle to debug build failures in these sensitive files.
+
+\textbf{Failure Analysis}: We analyzed 20 False Negatives (Ghosted PRs predicted as Safe). A common pattern is **"Silent Abandonment"**: simple PRs (no CI touches, has plan) where the agent simply stops responding to subjective feedback (e.g., "variable naming is confusing"). These semantic nuances remain hard to predict from metadata.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{shap_summary_ghosting.png}
+  \caption{SHAP Summary. CI touches increase risk; Plans decrease it.}
+  \Description{SHAP summary plot.}
+  \label{fig:shap}
+\end{figure}
+
+\section{Discussion: Actionable Policy}
+Based on our findings, we propose a concrete Triage Policy for maintainers accepting Agentic-PRs:
+
+\noindent\fbox{%
+    \parbox{\linewidth}{%
+        \textbf{Proposed Agentic Triage Policy}
+        \begin{enumerate}
+            \item \textbf{Gatekeep Complexity}: If `touches_ci` OR `touches_deps`: Require human operator sign-off before review.
+            \item \textbf{Demand Plans}: PRs missing a structured plan (`has_plan=0`) should be marked "Needs Info".
+            \item \textbf{The 14-Day Rule}: If an agent has not responded to feedback in 14 days, close the PR immediately. Our sensitivity analysis shows 100\% of such PRs are never recovered.
+        \end{enumerate}
+    }%
+}
+
+\begin{acks}
+We thank the MSR 2026 organizers. Artifacts available at: [Anonymized].
+\end{acks}
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+
+\end{document}

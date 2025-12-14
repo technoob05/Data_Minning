@@ -1,0 +1,5 @@
+target,model,auc,pr_auc
+is_high_cost,Logistic Regression,0.6362083793716842,0.607111361736313
+is_high_cost,Rule: CI or Deps,0.5349063756259257,0.559620387542663
+is_ghosted,Logistic Regression,0.6287898074670177,0.20573999204647722
+is_ghosted,Rule: CI or Deps,0.5039662580877513,0.23748487488864972
