@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+.vscode/
+
+# Data (Large files)
+msr26-aidev-triage/data/
+*.parquet
+
+# Artifacts (Models and intermediate files)
+*.pkl
+msr26-aidev-triage/artifacts/
+
+# Environment
+venv/
+env/
+.env

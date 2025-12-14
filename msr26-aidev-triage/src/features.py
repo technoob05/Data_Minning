@@ -1,0 +1,106 @@
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import LabelEncoder
+
+def engineer_features(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Engineers features for the triage model.
+    """
+    print("Engineering features...")
+    
+    # Copy to avoid modifying original
+    feat_df = df.copy()
+    
+    # 1. Temporal Features
+    feat_df["created_hour"] = feat_df["created_at"].dt.hour
+    feat_df["created_dayofweek"] = feat_df["created_at"].dt.dayofweek
+    feat_df["is_weekend"] = feat_df["created_dayofweek"].isin([5, 6]).astype(int)
+    
+    # 2. Text Features (Title/Body)
+    feat_df["title"] = feat_df["title"].fillna("")
+    feat_df["body"] = feat_df["body"].fillna("")
+    
+    feat_df["title_len"] = feat_df["title"].str.len()
+    feat_df["body_len"] = feat_df["body"].str.len()
+    
+    # NLP Cues
+    feat_df["mentions_tests"] = feat_df["body"].str.contains("test", case=False).astype(int)
+    feat_df["has_checklist"] = feat_df["body"].str.contains("- \[ \]", regex=False).astype(int) | \
+                               feat_df["body"].str.contains("- \[x\]", regex=False).astype(int)
+    feat_df["links_issue"] = feat_df["body"].str.contains("#\d+", regex=True).astype(int)
+    
+    # 3. Interaction Features
+    # (Already have num_commits, num_reviews, num_comments, num_review_comments)
+    
+    # 4. Size Features
+    # (Already have additions, deletions, changed_files)
+    feat_df["total_changes"] = feat_df["additions"] + feat_df["deletions"]
+    
+    # 5. Agent Encoding (One-Hot or Label Encoding)
+    # For tree-based models, Label Encoding is often sufficient or categorical support.
+    # Let's use Label Encoding for simplicity in this baseline.
+    le = LabelEncoder()
+    feat_df["agent_encoded"] = le.fit_transform(feat_df["agent"].astype(str))
+    
+    # 6. Task Type Encoding
+    # Handle missing task types
+    feat_df["task_type"] = feat_df["task_type"].fillna("unknown")
+    le_task = LabelEncoder()
+    feat_df["task_type_encoded"] = le_task.fit_transform(feat_df["task_type"].astype(str))
+    
+    # 7. Target Construction
+    # Filter out 'open' PRs for training.
+    feat_df = feat_df[feat_df["status"].isin(["merged", "rejected"])].copy()
+    
+    # Target 1: High Cost (Top 20% of effort)
+    # Effort = num_comments + num_reviews
+    feat_df["effort_score"] = feat_df["num_comments"] + feat_df["num_reviews"]
+    effort_threshold = feat_df["effort_score"].quantile(0.80)
+    feat_df["is_high_cost"] = (feat_df["effort_score"] >= effort_threshold).astype(int)
+    
+    # Target 2: Ghosting (Rejected but had effort)
+    # Definition: Rejected AND (num_comments > 0 OR num_reviews > 0)
+    feat_df["is_ghosted"] = ((feat_df["status"] == "rejected") & (feat_df["effort_score"] > 0)).astype(int)
+    
+    # Legacy Target: is_merged
+    feat_df["is_merged"] = (feat_df["status"] == "merged").astype(int)
+    
+    # 8. Sanity Filter: Remove instant merges (< 1 min) from training
+    # Calculate duration if not present
+    if "duration_hours" not in feat_df.columns:
+        feat_df["end_date"] = feat_df["merged_at"].combine_first(feat_df["closed_at"])
+        feat_df["duration_hours"] = (feat_df["end_date"] - feat_df["created_at"]).dt.total_seconds() / 3600.0
+        
+    # Flag instant merges
+    feat_df["is_instant_merge"] = (feat_df["duration_hours"] < 1/60).astype(int)
+    
+    print(f"Features engineered. Training set size: {len(feat_df)}")
+    
+    return feat_df
+
+def get_feature_columns():
+    """
+    Returns the list of feature columns to be used for training.
+    """
+    return [
+        "agent_encoded",
+        "task_type_encoded",
+        "task_confidence",
+        "num_commits",
+        "additions",
+        "deletions",
+        "changed_files",
+        "total_changes",
+        "title_len",
+        "body_len",
+        "created_hour",
+        "created_dayofweek",
+        "is_weekend",
+        # New NLP Features
+        "mentions_tests",
+        "has_checklist",
+        "links_issue",
+        # New Diff Features
+        "touches_tests",
+        "touches_docs"
+    ]
