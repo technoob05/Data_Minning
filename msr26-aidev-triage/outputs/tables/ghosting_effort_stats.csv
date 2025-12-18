@@ -1,4 +1,4 @@
 type,count,mean_effort,median_effort
-Ghosted,2364,4.998307952622674,3.0
-Rejected (Non-Ghost),4906,1.0560538116591929,0.0
+Ghosted,1527,3.4027504911591357,3.0
+Rejected (Non-Ghost),5743,2.054849381856173,1.0
 Merged,24014,1.7630548846506204,0.0

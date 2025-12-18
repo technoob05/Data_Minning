@@ -1,0 +1,4 @@
+Budget,N_Flagged,Precision_HC,Recall_HC,Recall_Ghost,Effort_Saved
+Top 10%,287,93.0%,20.7%,4.0%,31.7%
+Top 20%,574,86.9%,38.7%,15.9%,47.4%
+Top 30%,861,81.4%,54.4%,23.0%,60.4%

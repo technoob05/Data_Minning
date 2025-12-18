@@ -1,0 +1,2 @@
+experiment,n_train,n_test,high_cost_auc,ghosting_auc
+single_commit_only,9223,1585,0.831,0.555

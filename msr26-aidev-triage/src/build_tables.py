@@ -205,10 +205,18 @@ def build_pr_base_table(dfs: dict) -> pd.DataFrame:
     # Follow-up Commits
     if dfs.get("pr_timeline") is not None:
         timeline = dfs["pr_timeline"].copy()
-        # Filter for 'committed' event
+        # Impute missing timestamps for 'committed' events using forward fill
+        timeline["created_at"] = timeline["created_at"].fillna(pd.NaT)
+        
+        # Group by PR to avoid leaking timestamps across PRs
+        timeline["filled_at"] = timeline.groupby("pr_id")["created_at"].ffill()
+        
+        # Filter for 'committed' event using imputed timestamp
         commits_event = timeline[timeline["event"] == "committed"].copy()
         commits_event["pr_id"] = commits_event["pr_id"].astype(str)
-        commits_event["created_at"] = pd.to_datetime(commits_event["created_at"], utc=True, errors="coerce")
+        
+        # Use filled_at as created_at
+        commits_event["created_at"] = pd.to_datetime(commits_event["filled_at"], utc=True, errors="coerce")
         
         # We need to filter commits that are AFTER the first feedback.
         # So we merge relevant columns to filtering
@@ -225,12 +233,63 @@ def build_pr_base_table(dfs: dict) -> pd.DataFrame:
             # Find the first one
             first_followup = check_df.groupby("pr_id")["created_at"].min().reset_index(name="first_followup_commit_at")
             
-            pr_df = pr_df.merge(first_followup, left_on="id", right_on="pr_id", how="left").drop(columns=["pr_id"], errors="ignore")
+            pr_df = pr_df.merge(first_followup, left_on="id", right_on="pr_id", how="left")
+            if "first_followup_commit_at_x" in pr_df.columns:
+                 pr_df = pr_df.drop(columns=["pr_id"], errors="ignore")
+            else: 
+                 pr_df = pr_df.drop(columns=["pr_id"], errors="ignore")
         else:
             pr_df["first_followup_commit_at"] = pd.NaT
 
     else:
         pr_df["first_followup_commit_at"] = pd.NaT
+
+    # Fallback: Extraction from pr_commits if timeline failed
+    if dfs.get("pr_commits") is not None:
+        # Check if we still have missing follow-ups for PRs with feedback
+        if "first_human_feedback_at" in pr_df.columns:
+             # Identify PRs that have feedback but NO follow-up yet (candidates for fallback)
+             # or we can just re-calculate for everyone and take the min.
+             
+             commits_df = dfs["pr_commits"].copy()
+             # Key mapping
+             key_col = "pr_id" if "pr_id" in commits_df.columns else "pull_request_id"
+             
+             # Timestamp column
+             ts_col = "committed_date"
+             if ts_col not in commits_df.columns:
+                 if "committer_date" in commits_df.columns:
+                     ts_col = "committer_date"
+                 else:
+                     ts_col = None
+             
+             if key_col in commits_df.columns and ts_col:
+                 print(f"Using {ts_col} from pr_commits as fallback for follow-ups...")
+                 commits_df[key_col] = commits_df[key_col].astype(str)
+                 commits_df[ts_col] = pd.to_datetime(commits_df[ts_col], utc=True, errors="coerce")
+                 
+                 # Merge with feedback time
+                 fallback_check = commits_df[[key_col, ts_col]].merge(
+                     pr_df[["id", "first_human_feedback_at"]],
+                     left_on=key_col, right_on="id", how="inner"
+                 )
+                 
+                 # Filter: Commit > Feedback
+                 fallback_check = fallback_check[fallback_check[ts_col] > fallback_check["first_human_feedback_at"]]
+                 
+                 # Find first
+                 first_fallback = fallback_check.groupby(key_col)[ts_col].min().reset_index(name="fallback_followup_at")
+                 
+                 # Merge back and fillna
+                 if "first_followup_commit_at" in pr_df.columns:
+                     pr_df = pr_df.merge(first_fallback, left_on="id", right_on=key_col, how="left")
+                     pr_df["first_followup_commit_at"] = pr_df["first_followup_commit_at"].combine_first(pr_df["fallback_followup_at"])
+                     pr_df = pr_df.drop(columns=[key_col, "fallback_followup_at"], errors="ignore")
+                 else:
+                     pr_df = pr_df.merge(first_fallback, left_on="id", right_on=key_col, how="left")
+                     pr_df["first_followup_commit_at"] = pr_df["fallback_followup_at"]
+                     pr_df = pr_df.drop(columns=[key_col, "fallback_followup_at"], errors="ignore")
+
 
     print(f"Base table built with {len(pr_df)} rows.")
     return pr_df

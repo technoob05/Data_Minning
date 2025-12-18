@@ -1,0 +1,101 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{6}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{} and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showURL}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showURL #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[Gousios et~al\mbox{.}(2014)]%
+        {gousios2014pr}
+\bibfield{author}{\bibinfo{person}{Georgios Gousios}, \bibinfo{person}{Martin
+  Pinzger}, {and} \bibinfo{person}{Arie van Deursen}.}
+  \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{An Exploratory Study of the Pull-based Software
+  Development Model}. In \bibinfo{booktitle}{\emph{Proc. ICSE}}.
+  \bibinfo{pages}{345--355}.
+\newblock
+
+
+\bibitem[Li et~al\mbox{.}(2025)]%
+        {li2025aidev}
+\bibfield{author}{\bibinfo{person}{Hao Li}, \bibinfo{person}{Haoxiang Zhang},
+  {and} \bibinfo{person}{Ahmed~E. Hassan}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{{The Rise of AI Teammates in Software Engineering
+  (SE) 3.0: How Autonomous Coding Agents Are Reshaping Software Engineering}}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2507.15003}}
+  (\bibinfo{year}{2025}).
+\newblock
+
+
+\bibitem[Peng et~al\mbox{.}(2023)]%
+        {peng2023copilot}
+\bibfield{author}{\bibinfo{person}{Peng} {et~al\mbox{.}}}
+  \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{The Impact of AI on Developer Productivity:
+  Evidence from GitHub Copilot}.
+\newblock \bibinfo{journal}{\emph{arXiv:2302.06590}} (\bibinfo{year}{2023}).
+\newblock
+
+
+\bibitem[Rigby and Bird(2013)]%
+        {rigby2013convergent}
+\bibfield{author}{\bibinfo{person}{Rigby} {and} \bibinfo{person}{Bird}.}
+  \bibinfo{year}{2013}\natexlab{}.
+\newblock \showarticletitle{Convergent Contemporary Software Peer Review
+  Practices}. In \bibinfo{booktitle}{\emph{Proc. ESEC/FSE}}.
+\newblock
+
+
+\bibitem[Thongtanunam et~al\mbox{.}(2017)]%
+        {thongtanunam2017review}
+\bibfield{author}{\bibinfo{person}{Thongtanunam} {et~al\mbox{.}}}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Review Participation in Modern Code Review}.
+\newblock \bibinfo{journal}{\emph{Empirical Software Engineering}}
+  (\bibinfo{year}{2017}).
+\newblock
+
+
+\bibitem[Tsay et~al\mbox{.}(2014)]%
+        {tsay2014pr}
+\bibfield{author}{\bibinfo{person}{Jason Tsay}, \bibinfo{person}{Laura
+  Dabbish}, {and} \bibinfo{person}{James Herbsleb}.}
+  \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{Influence of Social and Technical Factors for
+  Evaluating Contribution in GitHub}. In \bibinfo{booktitle}{\emph{Proc.
+  ICSE}}. \bibinfo{pages}{356--366}.
+\newblock
+
+
+\end{thebibliography}

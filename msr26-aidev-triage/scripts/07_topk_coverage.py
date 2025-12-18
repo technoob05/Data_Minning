@@ -4,6 +4,10 @@ import lightgbm as lgb
 import matplotlib.pyplot as plt
 from sklearn.model_selection import GroupShuffleSplit
 from pathlib import Path
+import sys
+
+# Add project root to path
+sys.path.append(str(Path(__file__).resolve().parents[1]))
 
 def plot_topk_coverage():
     print("Loading data for Top-K Coverage...")
@@ -24,12 +28,9 @@ def plot_topk_coverage():
         return
 
     # Features
-    feature_cols = [
-        "num_files", "num_lines_added", "num_lines_removed", 
-        "lines_per_file", "has_tests", "has_docs", "links_issue",
-        "has_plan", "touches_tests", "touches_docs", "touches_ci", 
-        "touches_deps", "touches_config"
-    ]
+    # Features - Use same as training
+    from src.features import get_feature_columns
+    feature_cols = get_feature_columns()
     # Add any missing features from the list used in 05
     # (Simplified for now, ensuring key ones are present)
     available_feats = [f for f in feature_cols if f in df.columns]
@@ -53,22 +54,24 @@ def plot_topk_coverage():
         print("Repo ID missing, skipping.")
         return
 
-    print("Training High Cost Model...")
-    train_data = lgb.Dataset(X_train, label=y_train)
-    test_data = lgb.Dataset(X_test, label=y_test, reference=train_data)
-    
-    params = {
-        "objective": "binary",
-        "metric": "auc",
-        "boosting_type": "gbdt",
-        "num_leaves": 31,
-        "learning_rate": 0.05,
-        "feature_fraction": 0.9,
-        "verbose": -1
-    }
-    
-    model = lgb.train(params, train_data, num_boost_round=500, valid_sets=[test_data], 
-                      callbacks=[lgb.early_stopping(stopping_rounds=20)])
+    print("Loading High Cost Model...")
+    model_path = "msr26-aidev-triage/artifacts/triage_model_high_cost.pkl"
+    if not Path(model_path).exists():
+        print(f"Error: {model_path} not found. Run 05_train_triage.py first.")
+        # Fallback to training if model not found, but warn
+        print("Falling back to training new model (Consistency Warning!)")
+        train_data = lgb.Dataset(X_train, label=y_train)
+        test_data = lgb.Dataset(X_test, label=y_test, reference=train_data)
+        params = {
+            "objective": "binary", "metric": "auc", "boosting_type": "gbdt",
+            "num_leaves": 31, "learning_rate": 0.05, "feature_fraction": 0.9, "verbose": -1
+        }
+        model = lgb.train(params, train_data, num_boost_round=500, valid_sets=[test_data], 
+                          callbacks=[lgb.early_stopping(stopping_rounds=20)])
+    else:
+        import joblib
+        model = joblib.load(model_path)
+
     
     # Predictions
     print("Generating Top-K Plot...")

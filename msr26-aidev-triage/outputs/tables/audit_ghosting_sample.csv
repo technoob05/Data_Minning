@@ -1,0 +1,31 @@
+,html_url,agent,first_human_feedback_at,first_followup_commit_at,days_to_followup
+12349,https://github.com/stanford-crfm/haliax/pull/186,OpenAI_Codex,2025-07-29 06:52:13+00:00,,
+29051,https://github.com/crewAIInc/crewAI/pull/2784,Devin,2025-05-08 09:34:43+00:00,,
+28913,https://github.com/pyth-network/pyth-crosschain/pull/2553,Devin,2025-04-03 18:02:43+00:00,,
+31133,https://github.com/airbytehq/airbyte/pull/52698,Devin,2025-01-31 21:50:13+00:00,2025-02-01 00:29:14+00:00,0.11042824074074074
+24468,https://github.com/twentyhq/twenty/pull/12642,OpenAI_Codex,2025-06-16 21:37:44+00:00,,
+1355,https://github.com/dotnet/sdk/pull/49530,Copilot,2025-06-23 18:41:47+00:00,,
+31767,https://github.com/antiwork/gumroad/pull/685,Devin,2025-07-24 18:38:46+00:00,2025-07-25 06:50:06+00:00,0.5078703703703704
+1529,https://github.com/OrchardCMS/OrchardCore/pull/18179,Copilot,2025-07-19 13:10:01+00:00,2025-07-19 13:13:16+00:00,0.0022569444444444442
+19775,https://github.com/metacraft-labs/codetracer/pull/233,OpenAI_Codex,2025-07-14 11:18:24+00:00,,
+3743,https://github.com/Azure/azure-sdk-for-net/pull/50521,Copilot,2025-06-10 19:31:13+00:00,2025-06-10 19:32:49+00:00,0.0011111111111111111
+14526,https://github.com/oven-sh/bun/pull/19742,OpenAI_Codex,2025-05-18 18:53:50+00:00,2025-05-18 18:53:52+00:00,2.3148148148148147e-05
+24508,https://github.com/jaseci-labs/jaseci/pull/1988,OpenAI_Codex,2025-05-31 11:12:18+00:00,,
+28952,https://github.com/appdotbuild/agent/pull/120,Devin,2025-04-17 15:39:12+00:00,2025-04-17 15:40:02+00:00,0.0005787037037037037
+4025,https://github.com/dotnet/aspire/pull/9820,Copilot,2025-06-11 08:39:14+00:00,2025-06-11 08:39:20+00:00,6.944444444444444e-05
+31763,https://github.com/OneKeyHQ/app-monorepo/pull/6698,Devin,2025-02-18 13:19:40+00:00,2025-02-18 13:19:47+00:00,8.101851851851852e-05
+29050,https://github.com/calcom/cal.com/pull/21183,Devin,2025-05-15 14:55:03+00:00,,
+29986,https://github.com/crewAIInc/crewAI/pull/2718,Devin,2025-04-29 13:22:45+00:00,,
+33027,https://github.com/airbytehq/airbyte/pull/59648,Devin,2025-05-05 04:38:25+00:00,2025-05-05 04:57:33+00:00,0.013287037037037036
+29590,https://github.com/calcom/cal.com/pull/22047,Devin,2025-07-01 19:26:28+00:00,,
+3437,https://github.com/dotnet/docs/pull/46264,Copilot,2025-05-20 00:16:52+00:00,2025-05-20 00:17:00+00:00,9.259259259259259e-05
+30480,https://github.com/onlook-dev/onlook/pull/1390,Devin,2025-02-15 23:47:42+00:00,,
+20288,https://github.com/oven-sh/bun/pull/19979,OpenAI_Codex,2025-05-29 01:23:00+00:00,,
+23341,https://github.com/MrBartusek/MeteoalarmCard/pull/291,OpenAI_Codex,2025-07-01 09:58:00+00:00,2025-07-01 09:59:21+00:00,0.0009375
+27479,https://github.com/WorkflowAI/WorkflowAI/pull/512,Cursor,2025-06-19 03:41:38+00:00,2025-06-20 16:50:34+00:00,1.5478703703703705
+435,https://github.com/Shopify/roast/pull/284,Claude_Code,2025-06-24 14:22:30+00:00,,
+27611,https://github.com/getsentry/sentry/pull/93189,Cursor,2025-06-10 02:05:05+00:00,,
+766,https://github.com/zeroc-ice/ice-demos/pull/516,Copilot,2025-06-05 14:48:23+00:00,,
+27963,https://github.com/TanStack/router/pull/4703,Cursor,2025-07-18 23:47:10+00:00,2025-07-19 01:30:01+00:00,0.0714236111111111
+2747,https://github.com/dotnet/maui/pull/30267,Copilot,2025-06-27 10:52:07+00:00,,
+2549,https://github.com/microsoft/promptpex/pull/179,Copilot,2025-06-20 20:42:31+00:00,2025-07-01 19:49:55+00:00,10.963472222222222
