@@ -100,7 +100,7 @@ We extract 35 features across three categories (Table~\ref{tab:features}): (1) \
 We frame the triage problem as a binary classification task. Our primary target, \textbf{High Cost}, is defined as the top 20\% of PRs by total reviewer effort (sum of comments and reviews). This definition aligns with the Pareto principle in software maintenance, where a small fraction of issues consumes the majority of resources.
 For evaluation, we employ a \textbf{Repo-Disjoint Split} (80/20). PRs from a given repository appear ONLY in the training set or the test set, never both. This strict protocol ensures that our model learns generalizable signals of agent behavior rather than memorizing project-specific norms or confidentially overfitting to a specific repo's style. We compare our LightGBM model with class balancing against two baselines: a Logistic Regression model trained on TF-IDF vectors of the PR content (representing a traditional NLP approach) and a simple heuristic rule (reject if touching critical paths).
 
-\begin{table}[h]
+\begin{table}[t!]
   \caption{Operational Definitions of Target Variables}
   \label{tab:definitions}
   \begin{tabular}{lp{5.5cm}}
@@ -116,9 +116,9 @@ For evaluation, we employ a \textbf{Repo-Disjoint Split} (80/20). PRs from a giv
 \subsection{Label Audit}
 To validate our ``True Ghosting'' definition, we sampled 4,969 PRs from the Rejected+Feedback pool. We found that 35.3\% were single-commit (no follow-up activity), and 90.6\% were closed within 14 days of receiving feedback (Figure~\ref{fig:audit}). This confirms that ``ghosting'' is a fast phenomenon: agents that do not respond within a few days rarely recover. We also observed agent-specific patterns: OpenAI Codex had the highest single-commit rate (66%), while Copilot showed only 19%.
 
-\begin{figure}[h]
+\begin{figure}[t!]
   \centering
-  \includegraphics[width=0.8\linewidth]{audit_ecdf.png}
+  \includegraphics[width=0.6\linewidth]{audit_ecdf.png}
   \caption{Label Audit: ECDF of time from feedback to close.}
   \Description{ECDF.}
   \label{fig:audit}
@@ -130,15 +130,15 @@ To validate our ``True Ghosting'' definition, we sampled 4,969 PRs from the Reje
 \subsection{RQ1: Predictability of Effort and Risk}
 One of the primary challenges in open-source maintenance is prioritizing the review queue. As shown in Table \ref{tab:performance}, our LightGBM model demonstrates strong predictive capability only when using full interactive features (AUC 0.96). The Snapshot model (AUC 0.54) fails to outperform the TF-IDF baseline (AUC 0.57). This negative result highlights that "Intent" (metadata) is cheap; only "Action" (code/complexity) signals risk.
 
-\begin{figure}[h]
+\begin{figure}[t!]
   \centering
-  \includegraphics[width=\linewidth]{ghosting_rate.png}
+  \includegraphics[width=0.7\linewidth]{ghosting_rate.png}
   \caption{Ghosting Rate by Agent. Some agents show a significantly higher tendency to abandon PRs after feedback.}
   \Description{Bar chart showing ghosting rates for different AI agents.}
   \label{fig:ghosting_rate}
 \end{figure}
 
-\begin{table}[h]
+\begin{table}[t!]
   \centering
   \small
   \caption{Model Performance (AUC) \& Leakage Control. Snapshot relies on metadata available at creation (preventing leakage). Full-PR incorporates dynamic lifecycle signals.}
@@ -162,9 +162,9 @@ One of the primary challenges in open-source maintenance is prioritizing the rev
 
 
 
-\begin{figure}[h]
+\begin{figure}[t!]
   \centering
-  \includegraphics[width=\linewidth]{topk_coverage.png}
+  \includegraphics[width=0.7\linewidth]{topk_coverage.png}
   \caption{Top-K Triage Utility. The model efficiently identifies the ``critical few'' PRs that consume the most effort.}
   \Description{Cumulative gain chart.}
   \label{fig:topk}
@@ -200,9 +200,9 @@ The acceptance rate drops to 68.7\% for normal PRs, confirming that agents strug
 
 \textbf{Interactive Complexity and CI Feedback}. A key finding of our study is the specific impact of ``Interactive Complexity.'' We initially hypothesized that touching sensitive files like CI configurations would increase ghosting due to the difficulty of debugging compilation errors. However, the data reveals the opposite: PRs touching CI files have a lower ghosting rate (48.5\%) compared to the baseline (65.8\%). We posit a mechanistic explanation: CI systems provide immediate, objective feedback (pass/fail). Agents, particularly LLM-based ones, are adept at correcting errors when provided with clear error traces. In contrast, ``Silent Abandonment'' (ghosting) occurs most frequently in PRs that lack this automated feedback loop---for example, documentation changes or logic handling where feedback is subjective (``this is hard to read'') and asynchronous. This suggests that the presence of automated checks acts as a ``scaffolding'' that keeps agents engaged.
 
-\begin{figure}[h]
+\begin{figure}[t!]
   \centering
-  \includegraphics[width=0.8\linewidth]{complexity_heatmap_ghosting.png}
+  \includegraphics[width=0.6\linewidth]{complexity_heatmap_ghosting.png}
   \caption{Ghosting Risk Heatmap. Multi-component touches increase abandonment risk.}
   \label{fig:heatmap}
 \end{figure}
@@ -220,7 +220,7 @@ To validate our findings, we performed two robustness checks.
 We verified that our ``High Cost'' prediction is stable across different definitions of effort. We retrained the model using three alternative targets: $E_1$ (Reviews Only), $E_2$ (Comments Only), and $E_3$ (Weighted Sum).
 As shown in Table \ref{tab:robustness}, the model maintains high predictive power (AUC 0.79--0.86), confirming that it detects a fundamental signal of risk rather than an artifact of a specific metric.
 
-\begin{table}[h]
+\begin{table}[t!]
   \caption{Robustness to Effort Definition}
   \label{tab:robustness}
   \begin{tabular}{llc}
