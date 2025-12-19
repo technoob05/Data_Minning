@@ -1,6 +1,6 @@
 This is BibTeX, Version 0.99d
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
-The top-level auxiliary file: paper_draft.aux
+The top-level auxiliary file: paper_clean.aux
 Reallocating 'name_of_file' (item size: 1) to 21 items.
 The style file: ACM-Reference-Format.bst
 Reallocating 'name_of_file' (item size: 1) to 12 items.
@@ -46,12 +46,6 @@ Reallocating 'glb_str_end' (item size: 4) to 20 items.
 Reallocating 'glb_str_ptr' (item size: 4) to 20 items.
 Reallocating 'global_strs' (item size: 1) to 4000000 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
-Warning--empty booktitle in allamanis2018survey
-Warning--no number and no volume in allamanis2018survey
-Warning--page numbers missing in both pages and numpages fields in allamanis2018survey
-Warning--empty publisher in arcuri2011practical
-Warning--empty address in arcuri2011practical
-Warning--page numbers missing in both pages and numpages fields in arcuri2011practical
 Warning--empty booktitle in austin2021program
 Warning--no number and no volume in austin2021program
 Warning--page numbers missing in both pages and numpages fields in austin2021program
@@ -65,13 +59,9 @@ Warning--empty publisher in begel2014analyze
 Warning--empty address in begel2014analyze
 Warning--page numbers missing in both pages and numpages fields in begel2014analyze
 Warning--empty publisher in sre2016reliability
-Warning--empty address in sre2016reliability
 Warning--page numbers missing in both pages and numpages fields in sre2016reliability
-Warning--empty publisher in bird2009promises
 Warning--empty address in bird2009promises
-Warning--page numbers missing in both pages and numpages fields in bird2009promises
-Warning--no number and no volume in brown2020language
-Warning--page numbers missing in both pages and numpages fields in brown2020language
+Warning--no journal in brown2020language
 Warning--no number and no volume in chen2021codex
 Warning--page numbers missing in both pages and numpages fields in chen2021codex
 Warning--empty publisher in choetkiertikul2015predicting
@@ -97,13 +87,8 @@ Warning--page numbers missing in both pages and numpages fields in gousios2015wo
 Warning--empty publisher in hassan2008road
 Warning--empty address in hassan2008road
 Warning--page numbers missing in both pages and numpages fields in hassan2008road
-Warning--empty publisher in hellendoorn2017deep
-Warning--empty address in hellendoorn2017deep
-Warning--page numbers missing in both pages and numpages fields in hellendoorn2017deep
 Warning--no number and no volume in hindle2012naturalness
 Warning--page numbers missing in both pages and numpages fields in hindle2012naturalness
-Warning--no number and no volume in jorgensen2007systematic
-Warning--page numbers missing in both pages and numpages fields in jorgensen2007systematic
 Warning--empty publisher in kalliamvakou2014promises
 Warning--empty address in kalliamvakou2014promises
 Warning--page numbers missing in both pages and numpages fields in kalliamvakou2014promises
@@ -113,15 +98,9 @@ Warning--page numbers missing in both pages and numpages fields in kamei2013larg
 Warning--empty publisher in kim2008classifying
 Warning--empty address in kim2008classifying
 Warning--page numbers missing in both pages and numpages fields in kim2008classifying
-Warning--no number and no volume in lebeuf2018software
-Warning--page numbers missing in both pages and numpages fields in lebeuf2018software
 Warning--no number and no volume in li2025aidev
 Warning--page numbers missing in both pages and numpages fields in li2025aidev
-Warning--no number and no volume in li2022competition
-Warning--page numbers missing in both pages and numpages fields in li2022competition
-Warning--empty publisher in mcintosh2014impact
 Warning--empty address in mcintosh2014impact
-Warning--page numbers missing in both pages and numpages fields in mcintosh2014impact
 Warning--empty publisher in mockus2000case
 Warning--empty address in mockus2000case
 Warning--page numbers missing in both pages and numpages fields in mockus2000case
@@ -142,9 +121,7 @@ Warning--page numbers missing in both pages and numpages fields in rigby2013conv
 Warning--empty publisher in steinmacher2015barriers
 Warning--empty address in steinmacher2015barriers
 Warning--page numbers missing in both pages and numpages fields in steinmacher2015barriers
-Warning--empty publisher in storey2016the
 Warning--empty address in storey2016the
-Warning--page numbers missing in both pages and numpages fields in storey2016the
 Warning--no number and no volume in thongtanunam2017review
 Warning--page numbers missing in both pages and numpages fields in thongtanunam2017review
 Warning--no number and no volume in touvron2023llama
@@ -178,45 +155,45 @@ Warning--empty address in yu2016reviewer
 Warning--page numbers missing in both pages and numpages fields in yu2016reviewer
 Warning--no number and no volume in ziegler2022productivity
 Warning--page numbers missing in both pages and numpages fields in ziegler2022productivity
-You've used 49 entries,
+You've used 46 entries,
             6273 wiz_defined-function locations,
-            1861 strings with 28040 characters,
-and the built_in function-call counts, 52319 in all, are:
-= -- 5789
-> -- 1994
+            1868 strings with 27854 characters,
+and the built_in function-call counts, 50636 in all, are:
+= -- 5676
+> -- 1901
 < -- 0
-+ -- 712
-- -- 686
-* -- 3759
-:= -- 5090
-add.period$ -- 213
-call.type$ -- 49
-change.case$ -- 379
-chr.to.int$ -- 48
-cite$ -- 181
-duplicate$ -- 4881
-empty$ -- 3464
-format.name$ -- 853
-if$ -- 12695
++ -- 675
+- -- 644
+* -- 3653
+:= -- 4909
+add.period$ -- 204
+call.type$ -- 46
+change.case$ -- 361
+chr.to.int$ -- 45
+cite$ -- 155
+duplicate$ -- 4708
+empty$ -- 3332
+format.name$ -- 799
+if$ -- 12302
 int.to.chr$ -- 3
 int.to.str$ -- 1
-missing$ -- 233
-newline$ -- 397
-num.names$ -- 342
-pop$ -- 2557
+missing$ -- 218
+newline$ -- 375
+num.names$ -- 321
+pop$ -- 2382
 preamble$ -- 1
-purify$ -- 769
+purify$ -- 727
 quote$ -- 0
-skip$ -- 1668
+skip$ -- 1628
 stack$ -- 0
-substring$ -- 2769
-swap$ -- 254
+substring$ -- 2902
+swap$ -- 291
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 1299
-warning$ -- 132
+type$ -- 1208
+warning$ -- 109
 while$ -- 212
 width$ -- 0
-write$ -- 889
+write$ -- 848
 (There were 8 error messages)

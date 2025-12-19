@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{49}
+\begin{thebibliography}{46}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -43,17 +43,9 @@
   \bibinfo{person}{Charles Sutton}.} \bibinfo{year}{2018}\natexlab{}.
 \newblock \showarticletitle{A survey of machine learning for big code and
   naturalness}.
-\newblock \bibinfo{journal}{\emph{Comput. Surveys}}.
-\newblock
-
-
-\bibitem[Arcuri and Briand(2011)]%
-        {arcuri2011practical}
-\bibfield{author}{\bibinfo{person}{Andrea Arcuri} {and} \bibinfo{person}{Lionel
-  Briand}.} \bibinfo{year}{2011}\natexlab{}.
-\newblock \showarticletitle{A practical guide for using statistical tests to
-  assess randomized algorithms in software engineering}. In
-  \bibinfo{booktitle}{\emph{Proc. ICSE}}.
+\newblock \bibinfo{journal}{\emph{ACM Computing Surveys (CSUR)}}
+  \bibinfo{volume}{51}, \bibinfo{number}{4} (\bibinfo{year}{2018}),
+  \bibinfo{pages}{1--33}.
 \newblock
 
 
@@ -103,6 +95,7 @@
   Murphy}.} \bibinfo{year}{2016}\natexlab{}.
 \newblock \showarticletitle{Site Reliability Engineering: How Google Runs
   Production Systems}. In \bibinfo{booktitle}{\emph{O'Reilly Media, Inc.}}
+  \bibinfo{address}{Sebastopol, CA}.
 \newblock
 
 
@@ -113,7 +106,8 @@
   \bibinfo{person}{Daniel~M. German}, {and} \bibinfo{person}{Prem Devanbu}.}
   \bibinfo{year}{2009}\natexlab{}.
 \newblock \showarticletitle{The promises and perils of mining git}. In
-  \bibinfo{booktitle}{\emph{Proc. MSR}}.
+  \bibinfo{booktitle}{\emph{Proc. MSR}}. \bibinfo{publisher}{IEEE},
+  \bibinfo{pages}{1--10}.
 \newblock
 
 
@@ -125,7 +119,8 @@
   \bibinfo{person}{Arvind Neelakantan}, {et~al\mbox{.}}}
   \bibinfo{year}{2020}\natexlab{}.
 \newblock \showarticletitle{Language Models are Few-Shot Learners}.
-\newblock \bibinfo{journal}{\emph{Proc. NeurIPS}} (\bibinfo{year}{2020}).
+\newblock   \bibinfo{volume}{33} (\bibinfo{year}{2020}),
+  \bibinfo{pages}{1877--1901}.
 \newblock
 
 
@@ -225,15 +220,6 @@
 \newblock
 
 
-\bibitem[Hellendoorn and Devanbu(2017)]%
-        {hellendoorn2017deep}
-\bibfield{author}{\bibinfo{person}{Vincent~J. Hellendoorn} {and}
-  \bibinfo{person}{Premkumar Devanbu}.} \bibinfo{year}{2017}\natexlab{}.
-\newblock \showarticletitle{Deep learning code fragments for code completion}.
-  In \bibinfo{booktitle}{\emph{Proc. ASE}}.
-\newblock
-
-
 \bibitem[Hindle et~al\mbox{.}(2012)]%
         {hindle2012naturalness}
 \bibfield{author}{\bibinfo{person}{Abram Hindle}, \bibinfo{person}{Earl~T
@@ -241,17 +227,6 @@
   \bibinfo{person}{Premkumar Devanbu}.} \bibinfo{year}{2012}\natexlab{}.
 \newblock \showarticletitle{On the naturalness of software}.
 \newblock \bibinfo{journal}{\emph{Proc. ICSE}} (\bibinfo{year}{2012}).
-\newblock
-
-
-\bibitem[Jorgensen and Shepperd(2007)]%
-        {jorgensen2007systematic}
-\bibfield{author}{\bibinfo{person}{Magne Jorgensen} {and}
-  \bibinfo{person}{Martin Shepperd}.} \bibinfo{year}{2007}\natexlab{}.
-\newblock \showarticletitle{A systematic review of software development cost
-  estimation studies}.
-\newblock \bibinfo{journal}{\emph{IEEE Transactions on Software Engineering}}
-  (\bibinfo{year}{2007}).
 \newblock
 
 
@@ -293,7 +268,8 @@
   \bibinfo{person}{Margaret-Anne Storey}, {and} \bibinfo{person}{Alexey
   Zagalsky}.} \bibinfo{year}{2018}\natexlab{}.
 \newblock \showarticletitle{Software bots}.
-\newblock \bibinfo{journal}{\emph{IEEE Software}} (\bibinfo{year}{2018}).
+\newblock \bibinfo{journal}{\emph{IEEE Software}} \bibinfo{volume}{35},
+  \bibinfo{number}{1} (\bibinfo{year}{2018}), \bibinfo{pages}{22--23}.
 \newblock
 
 
@@ -316,7 +292,8 @@
   \bibinfo{person}{Tom Eccles}, {et~al\mbox{.}}}
   \bibinfo{year}{2022}\natexlab{}.
 \newblock \showarticletitle{Competition-Level Code Generation with AlphaCode}.
-\newblock \bibinfo{journal}{\emph{Science}} (\bibinfo{year}{2022}).
+\newblock \bibinfo{journal}{\emph{Science}} \bibinfo{volume}{378},
+  \bibinfo{number}{6624} (\bibinfo{year}{2022}), \bibinfo{pages}{1092--1097}.
 \newblock
 
 
@@ -327,7 +304,8 @@
   Hassan}.} \bibinfo{year}{2014}\natexlab{}.
 \newblock \showarticletitle{The impact of code review coverage and code review
   participation on software quality evaluations}. In
-  \bibinfo{booktitle}{\emph{Proc. MSR}}.
+  \bibinfo{booktitle}{\emph{Proc. MSR}}. \bibinfo{publisher}{ACM},
+  \bibinfo{pages}{192--201}.
 \newblock
 
 
@@ -406,7 +384,8 @@
 \bibfield{author}{\bibinfo{person}{Margaret-Anne Storey} {and}
   \bibinfo{person}{Alexey Zagalsky}.} \bibinfo{year}{2016}\natexlab{}.
 \newblock \showarticletitle{The who, what, how, and why of software bots}. In
-  \bibinfo{booktitle}{\emph{Proc. ICSE}}.
+  \bibinfo{booktitle}{\emph{Proc. ICSE}}. \bibinfo{publisher}{IEEE},
+  \bibinfo{pages}{18--29}.
 \newblock
 
 

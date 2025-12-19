@@ -1,9 +1,9 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (MiKTeX 24.1) (preloaded format=xelatex 2025.12.18)  19 DEC 2025 08:25
+This is XeTeX, Version 3.141592653-2.6-0.999995 (MiKTeX 24.1) (preloaded format=xelatex 2025.12.18)  18 DEC 2025 23:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./paper_draft.tex
-(paper_draft.tex
+**./paper_final.tex
+(paper_final.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
 (acmart.cls
@@ -1341,8 +1341,9 @@ y
 Package: balance 1999/02/23 4.3 (PWD)
 \oldvsize=\dimen196
 ) Excluding comment 'screenonly' Include comment 'printonly'
-Excluding comment 'anonsuppress' Excluding comment 'acks' (paper_draft.aux)
-\openout1 = `paper_draft.aux'.
+Excluding comment 'anonsuppress' Excluding comment 'acks'
+No file paper_final.aux.
+\openout1 = `paper_final.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
 LaTeX Font Info:    ... okay on input line 11.
@@ -1380,7 +1381,6 @@ LaTeX Font Info:    Font shape `TU/LibertinusMath-Regular.otf(3)/m/n' will be
 (Font)              scaled to size 5.18944pt on input line 11.
 LaTeX Font Info:    Trying to load font information for U+msa on input line 11.
 
-
 (C:\Users\DELL 3450\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
@@ -1407,11 +1407,12 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 Package hyperref Info: Link coloring OFF on input line 11.
-
-(paper_draft.out) (paper_draft.out)
 \@outlinefile=\write4
-\openout4 = `paper_draft.out'.
+\openout4 = `paper_final.out'.
 
+
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -1503,6 +1504,143 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
+
+Package natbib Warning: Citation `li2025aidev' on page 1 undefined on input lin
+e 45.
+
+
+Package natbib Warning: Citation `peng2023copilot' on page 1 undefined on input
+ line 45.
+
+
+Package natbib Warning: Citation `chen2021codex' on page 1 undefined on input l
+ine 45.
+
+
+Package natbib Warning: Citation `brown2020language' on page 1 undefined on inp
+ut line 45.
+
+
+Package natbib Warning: Citation `touvron2023llama' on page 1 undefined on inpu
+t line 45.
+
+
+Package natbib Warning: Citation `li2022competition' on page 1 undefined on inp
+ut line 45.
+
+
+Package natbib Warning: Citation `fried2023incoder' on page 1 undefined on inpu
+t line 45.
+
+
+Package natbib Warning: Citation `austin2021program' on page 1 undefined on inp
+ut line 45.
+
+
+Package natbib Warning: Citation `ziegler2022productivity' on page 1 undefined 
+on input line 45.
+
+
+Package natbib Warning: Citation `barke2023grounded' on page 1 undefined on inp
+ut line 45.
+
+
+Package natbib Warning: Citation `vaithilingam2022usability' on page 1 undefine
+d on input line 45.
+
+
+Package natbib Warning: Citation `rigby2013convergent' on page 1 undefined on i
+nput line 45.
+
+
+Package natbib Warning: Citation `thongtanunam2017review' on page 1 undefined o
+n input line 45.
+
+
+Package natbib Warning: Citation `dabbish2012social' on page 1 undefined on inp
+ut line 45.
+
+
+Package natbib Warning: Citation `steinmacher2015barriers' on page 1 undefined 
+on input line 45.
+
+
+Package natbib Warning: Citation `bacchelli2013expectations' on page 1 undefine
+d on input line 47.
+
+
+Package natbib Warning: Citation `mcintosh2014impact' on page 1 undefined on in
+put line 47.
+
+
+Package natbib Warning: Citation `tsay2014pr' on page 1 undefined on input line
+ 47.
+
+
+Package natbib Warning: Citation `gousios2014pr' on page 1 undefined on input l
+ine 47.
+
+
+Package natbib Warning: Citation `yu2015wait' on page 1 undefined on input line
+ 47.
+
+
+Package natbib Warning: Citation `yu2016reviewer' on page 1 undefined on input 
+line 47.
+
+
+Package natbib Warning: Citation `choetkiertikul2015predicting' on page 1 undef
+ined on input line 47.
+
+
+Package natbib Warning: Citation `gousios2015work' on page 1 undefined on input
+ line 47.
+
+
+Package natbib Warning: Citation `gousios2016maintainer' on page 1 undefined on
+ input line 47.
+
+
+Package natbib Warning: Citation `vasilescu2015quality' on page 1 undefined on 
+input line 47.
+
+
+Package natbib Warning: Citation `kim2008classifying' on page 1 undefined on in
+put line 47.
+
+
+Package natbib Warning: Citation `rahman2012recalling' on page 1 undefined on i
+nput line 47.
+
+
+Package natbib Warning: Citation `li2025aidev' on page 1 undefined on input lin
+e 49.
+
+
+Package natbib Warning: Citation `bird2009promises' on page 1 undefined on inpu
+t line 49.
+
+
+Package natbib Warning: Citation `kalliamvakou2014promises' on page 1 undefined
+ on input line 49.
+
+
+Package natbib Warning: Citation `treude2011programmers' on page 1 undefined on
+ input line 49.
+
+
+Package natbib Warning: Citation `store2019bot' on page 1 undefined on input li
+ne 49.
+
+
+Package natbib Warning: Citation `wessel2020bots' on page 1 undefined on input 
+line 49.
+
+
+Package natbib Warning: Citation `wessel2021effects' on page 1 undefined on inp
+ut line 49.
+
+
 Overfull \hbox (22.54276pt too wide) in paragraph at lines 51--52
 []\TU/LinLibertine(0)/b/n/9 RQ1 (Predictability)\TU/LinLibertine(0)/m/n/9 : To 
 what extent can we rely on submission-
@@ -1520,9 +1658,52 @@ Overfull \hbox (1.54727pt too wide) in paragraph at lines 58--59
 -based
  []
 
+
+Package natbib Warning: Citation `li2025aidev' on page 1 undefined on input lin
+e 65.
+
+
+Package natbib Warning: Citation `hassan2008road' on page 1 undefined on input 
+line 65.
+
+
+Package natbib Warning: Citation `mockus2000case' on page 1 undefined on input 
+line 65.
+
+
+Package natbib Warning: Citation `bird2009promises' on page 1 undefined on inpu
+t line 65.
+
+
+Package natbib Warning: Citation `kalliamvakou2014promises' on page 1 undefined
+ on input line 65.
+
+
+Package natbib Warning: Citation `yu2015wait' on page 1 undefined on input line
+ 65.
+
+
+Package natbib Warning: Citation `kamei2013large' on page 1 undefined on input 
+line 68.
+
+
+Package natbib Warning: Citation `kim2008classifying' on page 1 undefined on in
+put line 68.
+
+
+Package natbib Warning: Citation `ray2014large' on page 1 undefined on input li
+ne 68.
+
+
+Package natbib Warning: Citation `rahman2014characterizing' on page 1 undefined
+ on input line 68.
+
+
+Underfull \vbox (badness 1655) has occurred while \output is active []
+
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
 (Font)              scaled to size 6.0pt on input line 69.
-[1.1
+ [1.1
 
 ]
 Package microtype Info: Loading generic protrusion settings for font family
@@ -1530,197 +1711,40 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Overfull \hbox (8.22151pt too wide) in paragraph at lines 74--75
+
+Package natbib Warning: Citation `hindle2012naturalness' on page 2 undefined on
+ input line 70.
+
+
+Package natbib Warning: Citation `allamanis2018survey' on page 2 undefined on i
+nput line 70.
+
+
+Package natbib Warning: Citation `hellendoorn2017deep' on page 2 undefined on i
+nput line 70.
+
+
+Overfull \hbox (8.22151pt too wide) in paragraph at lines 71--72
 \TU/LinLibertine(0)/m/n/9 deletions, and specific file types touched: \TU/incon
 solata(0)/m/n/9 touches_ci \TU/LinLibertine(0)/m/n/9 (CI/CD
  []
 
 
-Overfull \hbox (3.95403pt too wide) in paragraph at lines 74--75
+Overfull \hbox (3.95403pt too wide) in paragraph at lines 71--72
 \TU/LinLibertine(0)/m/n/9 configs), \TU/inconsolata(0)/m/n/9 touches_tests\TU/L
 inLibertine(0)/m/n/9 , \TU/inconsolata(0)/m/n/9 touches_deps \TU/LinLibertine(0
 )/m/n/9 (dependency files). 
  []
 
-LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/it' will be
-(Font)              scaled to size 9.0pt on input line 89.
-File: audit_ecdf.png Graphic file (type bmp)
-<audit_ecdf.png>
 
-Overfull \hbox (1.31029pt too wide) in paragraph at lines 110--111
-\TU/LinLibertine(0)/m/n/9 model demonstrates strong predictive capability, achi
-eving an AUC
- []
+Package natbib Warning: Citation `vasilescu2015gender' on page 2 undefined on i
+nput line 72.
 
 
-Overfull \hbox (1.7895pt too wide) in paragraph at lines 110--111
-\TU/LinLibertine(0)/m/n/9 talkers” (generating eloquent descriptions) while sub
-mitting flawed
- []
-
-File: ghosting_rate.png Graphic file (type bmp)
-<ghosting_rate.png>
-
-Underfull \hbox (badness 2617) in paragraph at lines 121--121
-\TU/LinLibertine(0)/b/n/9 line uses TF-IDF (unigrams, max 1000 features) on ti-
-
- []
+Package natbib Warning: Citation `devanbu2016belief' on page 2 undefined on inp
+ut line 72.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/n' will be
-(Font)              scaled to size 9.0pt on input line 136.
-LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 136.
-[2.2]
-Overfull \hbox (5.29126pt too wide) in paragraph at lines 137--138
-\TU/LinLibertine(0)/m/n/9 lates over the PR lifecycle. We acknowledge this limi
-tation in Threats
- []
-
-LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 140.
-LaTeX Font Info:    Font shape `TU/LibertinusMath-Regular.otf(1)/m/n' will be
-(Font)              scaled to size 8.30396pt on input line 143.
-LaTeX Font Info:    Font shape `TU/LibertinusMath-Regular.otf(1)/m/n' will be
-(Font)              scaled to size 6.22797pt on input line 143.
-LaTeX Font Info:    Font shape `TU/LibertinusMath-Regular.otf(2)/m/n' will be
-(Font)              scaled to size 8.30469pt on input line 143.
-LaTeX Font Info:    Font shape `TU/LibertinusMath-Regular.otf(2)/m/n' will be
-(Font)              scaled to size 6.22852pt on input line 143.
-LaTeX Font Info:    Font shape `TU/LibertinusMath-Regular.otf(3)/m/n' will be
-(Font)              scaled to size 8.3031pt on input line 143.
-LaTeX Font Info:    Font shape `TU/LibertinusMath-Regular.otf(3)/m/n' will be
-(Font)              scaled to size 6.22733pt on input line 143.
-File: topk_coverage.png Graphic file (type bmp)
-<topk_coverage.png>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-File: shap_summary_ghosting.png Graphic file (type bmp)
-<shap_summary_ghosting.png>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (1.093pt too wide) in paragraph at lines 178--179
-[]\TU/LinLibertine(0)/b/n/9 The Two-Regime Distribution\TU/LinLibertine(0)/m/n/
-9 . We observed that Agentic-PRs
- []
-
-
-Overfull \hbox (1.35909pt too wide) in paragraph at lines 178--179
-\TU/LinLibertine(0)/m/n/9 Merges”—trivial updates (e.g., dependency bumps, form
-atting fixes)
- []
-
-[3.3]
-File: instant_merges.png Graphic file (type bmp)
-<instant_merges.png>
-File: instant_vs_normal_dist.png Graphic file (type bmp)
-<instant_vs_normal_dist.png>
-
-
-Class acmart Warning: A possible image without description on input line 195.
-
-File: complexity_heatmap_ghosting.png Graphic file (type bmp)
-<complexity_heatmap_ghosting.png>
-
-Class acmart Warning: A possible image without description on input line 204.
-
-File: ablation_plot.png Graphic file (type bmp)
-<ablation_plot.png>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[4.4]
-Overfull \hbox (2.04451pt too wide) in paragraph at lines 262--263
-\TU/LinLibertine(0)/m/n/9 As AI agents increasingly enter the software workforc
-e, distinguish-
- []
-
-Excluding 'acks' comment. (paper_draft.bbl
-LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/it' will be
-(Font)              scaled to size 7.0pt on input line 46.
-
-Underfull \hbox (badness 3861) in paragraph at lines 65--69
-[]\TU/LinLibertine(0)/m/n/7 Jacob Austin, Augustus Odena, Maxwell Nye, Maarten 
-Bosma, Henryk
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 212--217
-[]\TU/LinLibertine(0)/m/n/7 Georgios Gousios, Andy Zaidman, Margaret-Anne Store
-y, and Arie
- []
-
-
-Underfull \vbox (badness 1558) has occurred while \output is active []
-
- [5.5]
-! Undefined control sequence.
-<argument> Baptiste Rozi{\e 
-                            }re
-l.429   Rozi{\e}re}, {et~al\mbox{.}}}
-                                      \bibinfo{year}{2023}\natexlab{}.
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-Underfull \hbox (badness 1127) in paragraph at lines 517--522
-[]\TU/LinLibertine(0)/m/n/7 Mairieli Wessel, Alexander Serebrenik, Igor Wiese, 
-Igor Steinmacher, and
- []
-
-)
-
-Class acmart Warning: Some images may lack descriptions.
-(acmart)              ACM is committed to complying with the upcoming US ADA ht
-tps://accessiblyapp.com/accessibility-compliance/ada/ and European Accessibilit
-y Act (EAA) https://accessiblyapp.com/accessibility-compliance/eaa/ regulations
- by actively working to ensure our publications and application services are ac
-cessible to individuals with disabilities, adhering to the WCAG guidelines to p
-rovide a seamless experience for all users, and regularly reviewing our accessi
-bility practices to maintain compliance with evolving standards. 
-(acmart)              To this end, we strongly encourage our authors to provide
- alternative text and captions for images and multimedia content. It is also im
-portant to optimize color contrast for the visually impaired. Taking these impo
-rtant steps when creating your papers will ensure that the widest possible audi
-ence can ingest your work..
-
-
-Class acmart Warning: ACM reference format is mandatory 
-(acmart)              for papers over one page. 
-(acmart)              Please add printacmref=true to the 
-(acmart)              \settopmatter command..
-
-
-(C:\Users\DELL 3450\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\se-pdfd
-oc.def
-File: se-pdfdoc.def 2019/11/29 v1.12 stringenc: PDFDocEncoding
-)
-(C:\Users\DELL 3450\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\se-utf3
-2be.def
-File: se-utf32be.def 2019/11/29 v1.12 stringenc: UTF-32BE
-) [6.6] (paper_draft.aux)
- ***********
-LaTeX2e <2023-11-01> patch level 1
-L3 programming layer <2024-01-04>
- ***********
-Package rerunfilecheck Info: File `paper_draft.out' has not changed.
-(rerunfilecheck)             Checksum: A5A725C0E20127E914E05E97283B75F3;3323.
- ) 
-Here is how much of TeX's memory you used:
- 32792 strings out of 409617
- 631670 string characters out of 5773200
- 1971191 words of memory out of 5000000
- 54358 multiletter control sequences out of 15000+600000
- 566333 words of font info for 144 fonts, out of 8000000 for 9000
- 1509 hyphenation exceptions out of 8191
- 105i,16n,134p,1182b,32965s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-Output written on paper_draft.pdf (6 pages).
+Overfull \hbox (1.59079pt too wide) in paragraph at lines 78--80
+\TU/LinLibertine(0)/b/n/9 GBM \TU/LinLibertine(0)/m/n/9 classifiers with class 
+ba

@@ -1,35 +1,123 @@
 \relax 
 \providecommand\hyper@newdestlabel[2]{}
 \providecommand*\HyPL@Entry[1]{}
+\citation{li2025aidev,peng2023copilot,chen2021codex,brown2020language,touvron2023llama,li2022competition,fried2023incoder,austin2021program}
+\citation{ziegler2022productivity,barke2023grounded,vaithilingam2022usability}
+\citation{rigby2013convergent,thongtanunam2017review,dabbish2012social,steinmacher2015barriers}
+\citation{bacchelli2013expectations,mcintosh2014impact}
+\citation{tsay2014pr,gousios2014pr,yu2015wait,yu2016reviewer,choetkiertikul2015predicting,gousios2015work,gousios2016maintainer}
+\citation{vasilescu2015quality,kim2008classifying,rahman2012recalling}
 \citation{li2025aidev}
-\citation{peng2023copilot}
-\citation{tsay2014pr,gousios2014pr}
-\citation{rigby2013convergent,thongtanunam2017review}
-\citation{bacchelli2013expectations}
+\citation{bird2009promises,kalliamvakou2014promises,treude2011programmers,store2019bot,wessel2020bots,wessel2021effects}
+\citation{li2025aidev}
+\citation{hassan2008road,mockus2000case,bird2009promises,kalliamvakou2014promises}
+\citation{yu2015wait}
 \HyPL@Entry{0<</S/D>>}
 \@writefile{toc}{\contentsline {section}{Abstract}{1}{section*.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2}Methodology}{1}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Dataset \& Definitions}{1}{subsection.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Modeling Setup}{1}{subsection.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3}Results}{1}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}RQ1: Prediction \& Utility}{1}{subsection.3.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Performance (AUC-ROC) on Repo-Disjoint Test Set.}}{1}{table.caption.5}\protected@file@percent }
+\newlabel{sec:method}{{2}{1}{Methodology}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Dataset Curation}{1}{subsection.2.1}\protected@file@percent }
+\citation{kamei2013large,kim2008classifying,ray2014large,rahman2014characterizing}
+\citation{hindle2012naturalness,allamanis2018survey,hellendoorn2017deep}
+\citation{vasilescu2015gender,devanbu2016belief}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Feature Engineering}{2}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Modeling Approach}{2}{subsection.2.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Operational Definitions of Target Variables}}{2}{table.caption.5}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{tab:results}{{1}{1}{Performance (AUC-ROC) on Repo-Disjoint Test Set}{table.caption.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}RQ2: Behavioral Dynamics}{1}{subsection.3.2}\protected@file@percent }
-\citation{vasilescu2015quality}
-\citation{zhang2020sentimental}
-\citation{pinto2018casual}
-\citation{thongtanunam2017review}
+\newlabel{tab:definitions}{{1}{2}{Operational Definitions of Target Variables}{table.caption.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Label Audit}{2}{subsection.2.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Label Audit: ECDF of time from feedback to PR close. Over half close within 1 day, and over 90 percent within 14 days.}}{2}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:audit}{{1}{2}{Label Audit: ECDF of time from feedback to PR close. Over half close within 1 day, and over 90 percent within 14 days}{figure.caption.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Results and Analysis}{2}{section.3}\protected@file@percent }
+\newlabel{sec:results}{{3}{2}{Results and Analysis}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}RQ1: Predictability of Effort and Risk}{2}{subsection.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Ghosting Rate by Agent. Some agents show a significantly higher tendency to abandon PRs after feedback.}}{2}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:ghosting_rate}{{2}{2}{Ghosting Rate by Agent. Some agents show a significantly higher tendency to abandon PRs after feedback}{figure.caption.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Model Performance vs Baselines (AUC). Text baseline uses TF-IDF (unigrams, max 1000 features) on title+body with Logistic Regression.}}{3}{table.caption.8}\protected@file@percent }
+\newlabel{tab:baselines}{{2}{3}{Model Performance vs Baselines (AUC). Text baseline uses TF-IDF (unigrams, max 1000 features) on title+body with Logistic Regression}{table.caption.8}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Policy Simulation. Precision@K = \% of flagged PRs that are truly high-cost. Recall = \% of all high-cost PRs captured. Effort = \% of total review work captured.}}{3}{table.caption.9}\protected@file@percent }
+\newlabel{tab:policy}{{3}{3}{Policy Simulation. Precision@K = \% of flagged PRs that are truly high-cost. Recall = \% of all high-cost PRs captured. Effort = \% of total review work captured}{table.caption.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Risk Factors \& Failure Modes}{3}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}RQ2: The Ghosting Phenomenon}{3}{subsection.3.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Top-K Triage Utility. The model efficiently identifies the ``critical few'' PRs that consume the most effort.}}{3}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:topk}{{3}{3}{Top-K Triage Utility. The model efficiently identifies the ``critical few'' PRs that consume the most effort}{figure.caption.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces SHAP Summary. CI touches increase risk; Plans decrease it.}}{3}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:shap}{{4}{3}{SHAP Summary. CI touches increase risk; Plans decrease it}{figure.caption.11}{}}
+\citation{storey2016the,lebeuf2018software,begel2014analyze}
+\citation{sre2016reliability}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Regime Characterization. Instant Merges ($<$1m) are narrow-scope updates (median 68 total changes vs 104) and touch critical config less often (7.1\% vs 18.4\%) than Normal PRs.}}{4}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:regimes}{{5}{4}{Regime Characterization. Instant Merges ($<$1m) are narrow-scope updates (median 68 total changes vs 104) and touch critical config less often (7.1\% vs 18.4\%) than Normal PRs}{figure.caption.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Ghosting Risk Heatmap. Multi-component touches increase abandonment risk, but CI touches paradoxically reduce it.}}{4}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:heatmap}{{6}{4}{Ghosting Risk Heatmap. Multi-component touches increase abandonment risk, but CI touches paradoxically reduce it}{figure.caption.13}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Generalization and Robustness}{4}{subsection.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Robustness Evaluation}{4}{section.4}\protected@file@percent }
+\newlabel{sec:robustness}{{4}{4}{Robustness Evaluation}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Effort Score Definition}{4}{subsection.4.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Robustness to Effort Definition}}{4}{table.caption.14}\protected@file@percent }
+\newlabel{tab:robustness}{{4}{4}{Robustness to Effort Definition}{table.caption.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Ablation Study}{4}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion: Towards an Agent-Aware Workflow}{4}{section.5}\protected@file@percent }
+\newlabel{sec:discussion}{{5}{4}{Discussion: Towards an Agent-Aware Workflow}{section.5}{}}
+\citation{arcuri2011practical,jorgensen2007systematic}
 \bibstyle{ACM-Reference-Format}
 \bibdata{sample-base}
-\bibcite{gousios2014pr}{{1}{2014}{{Gousios et~al\mbox  {.}}}{{}}}
-\bibcite{li2025aidev}{{2}{2025}{{Li et~al\mbox  {.}}}{{}}}
-\bibcite{peng2023copilot}{{3}{2023}{{Peng et~al\mbox  {.}}}{{}}}
-\bibcite{rigby2013convergent}{{4}{2013}{{Rigby and Bird}}{{}}}
-\bibcite{thongtanunam2017review}{{5}{2017}{{Thongtanunam et~al\mbox  {.}}}{{}}}
-\bibcite{tsay2014pr}{{6}{2014}{{Tsay et~al\mbox  {.}}}{{}}}
+\bibcite{allamanis2018survey}{{1}{2018}{{Allamanis et~al\mbox  {.}}}{{}}}
+\bibcite{arcuri2011practical}{{2}{2011}{{Arcuri and Briand}}{{}}}
+\bibcite{austin2021program}{{3}{2021}{{Austin et~al\mbox  {.}}}{{}}}
+\bibcite{bacchelli2013expectations}{{4}{2013}{{Bacchelli and Bird}}{{}}}
+\bibcite{barke2023grounded}{{5}{2023}{{Barke et~al\mbox  {.}}}{{}}}
+\bibcite{begel2014analyze}{{6}{2014}{{Begel and Zimmermann}}{{}}}
+\bibcite{sre2016reliability}{{7}{2016}{{Beyer et~al\mbox  {.}}}{{}}}
+\bibcite{bird2009promises}{{8}{2009}{{Bird et~al\mbox  {.}}}{{}}}
+\bibcite{brown2020language}{{9}{2020}{{Brown et~al\mbox  {.}}}{{}}}
+\bibcite{chen2021codex}{{10}{2021}{{Chen et~al\mbox  {.}}}{{}}}
+\bibcite{choetkiertikul2015predicting}{{11}{2015}{{Choetkiertikul et~al\mbox  {.}}}{{}}}
+\bibcite{dabbish2012social}{{12}{2012}{{Dabbish et~al\mbox  {.}}}{{}}}
+\bibcite{devanbu2016belief}{{13}{2016}{{Devanbu et~al\mbox  {.}}}{{}}}
+\bibcite{fried2023incoder}{{14}{2023}{{Fried et~al\mbox  {.}}}{{}}}
+\bibcite{gousios2016maintainer}{{15}{2013}{{Gousios}}{{}}}
+\bibcite{gousios2014pr}{{16}{2014}{{Gousios et~al\mbox  {.}}}{{}}}
+\bibcite{gousios2015work}{{17}{2015}{{Gousios et~al\mbox  {.}}}{{}}}
+\bibcite{hassan2008road}{{18}{2008}{{Hassan}}{{}}}
+\bibcite{hellendoorn2017deep}{{19}{2017}{{Hellendoorn and Devanbu}}{{}}}
+\bibcite{hindle2012naturalness}{{20}{2012}{{Hindle et~al\mbox  {.}}}{{}}}
+\bibcite{jorgensen2007systematic}{{21}{2007}{{Jorgensen and Shepperd}}{{}}}
+\bibcite{kalliamvakou2014promises}{{22}{2014}{{Kalliamvakou et~al\mbox  {.}}}{{}}}
+\bibcite{kamei2013large}{{23}{2013}{{Kamei et~al\mbox  {.}}}{{}}}
+\bibcite{kim2008classifying}{{24}{2008}{{Kim et~al\mbox  {.}}}{{}}}
+\bibcite{lebeuf2018software}{{25}{2018}{{Lebeuf et~al\mbox  {.}}}{{}}}
+\bibcite{li2025aidev}{{26}{2025}{{Li et~al\mbox  {.}}}{{}}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Feature Ablation Results. Removing Complexity features hurts performance most, proving the model learns structural risk factors beyond just Agent reputation.}}{5}{figure.caption.15}\protected@file@percent }
+\newlabel{fig:ablation}{{7}{5}{Feature Ablation Results. Removing Complexity features hurts performance most, proving the model learns structural risk factors beyond just Agent reputation}{figure.caption.15}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Threats to Validity \& Ethics}{5}{section.6}\protected@file@percent }
+\newlabel{sec:threats}{{6}{5}{Threats to Validity \& Ethics}{section.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion}{5}{section.7}\protected@file@percent }
+\newlabel{sec:conclusion}{{7}{5}{Conclusion}{section.7}{}}
+\@writefile{toc}{\contentsline {section}{References}{5}{section*.17}\protected@file@percent }
+\bibcite{li2022competition}{{27}{2022}{{Li et~al\mbox  {.}}}{{}}}
+\bibcite{mcintosh2014impact}{{28}{2014}{{McIntosh et~al\mbox  {.}}}{{}}}
+\bibcite{mockus2000case}{{29}{2000}{{Mockus et~al\mbox  {.}}}{{}}}
+\bibcite{peng2023copilot}{{30}{2023}{{Peng et~al\mbox  {.}}}{{}}}
+\bibcite{rahman2014characterizing}{{31}{2014}{{Rahman et~al\mbox  {.}}}{{}}}
+\bibcite{rahman2012recalling}{{32}{2012}{{Rahman et~al\mbox  {.}}}{{}}}
+\bibcite{ray2014large}{{33}{2014}{{Ray et~al\mbox  {.}}}{{}}}
+\bibcite{rigby2013convergent}{{34}{2013}{{Rigby and Bird}}{{}}}
+\bibcite{steinmacher2015barriers}{{35}{2015}{{Steinmacher et~al\mbox  {.}}}{{}}}
+\bibcite{storey2016the}{{36}{2016}{{Storey and Zagalsky}}{{}}}
+\bibcite{thongtanunam2017review}{{37}{2017}{{Thongtanunam et~al\mbox  {.}}}{{}}}
+\bibcite{touvron2023llama}{{38}{2023}{{Touvron et~al\mbox  {.}}}{{}}}
+\bibcite{treude2011programmers}{{39}{2011}{{Treude et~al\mbox  {.}}}{{}}}
+\bibcite{tsay2014pr}{{40}{2014}{{Tsay et~al\mbox  {.}}}{{}}}
+\bibcite{vaithilingam2022usability}{{41}{2022}{{Vaithilingam et~al\mbox  {.}}}{{}}}
+\bibcite{vasilescu2015quality}{{42}{2015a}{{Vasilescu et~al\mbox  {.}}}{{}}}
+\bibcite{vasilescu2015gender}{{43}{2015b}{{Vasilescu et~al\mbox  {.}}}{{}}}
+\bibcite{wessel2020bots}{{44}{2018}{{Wessel et~al\mbox  {.}}}{{}}}
+\bibcite{store2019bot}{{45}{2019}{{Wessel et~al\mbox  {.}}}{{}}}
+\bibcite{wessel2021effects}{{46}{2021}{{Wessel et~al\mbox  {.}}}{{}}}
+\bibcite{yu2015wait}{{47}{2015}{{Yu et~al\mbox  {.}}}{{}}}
+\bibcite{yu2016reviewer}{{48}{2016}{{Yu et~al\mbox  {.}}}{{}}}
+\bibcite{ziegler2022productivity}{{49}{2022}{{Ziegler et~al\mbox  {.}}}{{}}}
 \newlabel{tocindent-1}{0pt}
 \newlabel{tocindent0}{0pt}
 \newlabel{tocindent1}{4.185pt}
@@ -37,13 +125,5 @@
 \newlabel{tocindent3}{0pt}
 \newlabel{tocindent4}{0pt}
 \newlabel{tocindent5}{0pt}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Top-K Utility. The model captures nearly 50\% of wasted effort by flagging just 20\% of PRs.}}{2}{figure.caption.6}\protected@file@percent }
-\newlabel{fig:topk}{{1}{2}{Top-K Utility. The model captures nearly 50\% of wasted effort by flagging just 20\% of PRs}{figure.caption.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Survival Analysis. Probability of \textit  {not} ghosting (i.e., following up) over time. Curves flatten after 14 days, validating our threshold.}}{2}{figure.caption.7}\protected@file@percent }
-\newlabel{fig:survival}{{2}{2}{Survival Analysis. Probability of \textit {not} ghosting (i.e., following up) over time. Curves flatten after 14 days, validating our threshold}{figure.caption.7}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Discussion \& Implications}{2}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Threats to Validity}{2}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{2}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{References}{2}{section*.9}\protected@file@percent }
-\newlabel{TotPages}{{2}{2}{}{page.2}{}}
-\gdef \@abspage@last{2}
+\newlabel{TotPages}{{6}{6}{}{page.6}{}}
+\gdef \@abspage@last{6}
