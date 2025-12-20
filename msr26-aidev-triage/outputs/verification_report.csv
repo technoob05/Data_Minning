@@ -1,0 +1,8 @@
+claim,paper,actual,pass
+Dataset size,~34k,33596,True
+Agent count,5,5,True
+High-cost rate,20%,24.1%,True
+Ghosting rate,64.5%,12.0%,False
+Bot Jaccard,99.2%,100.0%,True
+SOTA best AUC,0.958,0.958,True
+LightGBM AUC,0.94,0.958,True

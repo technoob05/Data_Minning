@@ -1,0 +1,4 @@
+effort_definition,jaccard_overlap,agreement_rate,high_cost_count,mean_effort,median_effort
+Original (All Messages),1.0,1.0,5127,1.8966564377956783,0.0
+Bot Filtered,0.9920031207333724,0.9986894259046157,5086,1.8571154583812812,0.0
+Human Only,0.9920031207333724,0.9986894259046157,5086,1.8571154583812812,0.0

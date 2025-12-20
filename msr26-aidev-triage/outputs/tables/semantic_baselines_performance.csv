@@ -1,0 +1,4 @@
+baseline,features,AUC,PR-AUC
+AST Tree-Edit Proxy,ast_complexity_proxy,0.6476970291044408,0.37056568218085295
+Semantic Complexity,semantic_complexity,0.5599609980147782,0.34308647452775065
+Semantic Diff (Hybrid),ast + semantic + scope,0.6386852707972452,0.3741516557852318

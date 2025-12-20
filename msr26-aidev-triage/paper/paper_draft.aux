@@ -8,28 +8,25 @@
 \citation{tsay2014influence}
 \citation{khodabandehloo2021abandonment}
 \citation{peng2023copilot}
-\citation{security2025risks}
 \citation{li2025aidev}
-\citation{ke2017lightgbm}
 \@writefile{toc}{\contentsline {section}{Abstract}{2}{section*.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{2}{section.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Related Work}{2}{subsection.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2}Methodology}{2}{section.2}\protected@file@percent }
-\newlabel{sec:method}{{2}{2}{Methodology}{section.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Dataset Curation}{2}{subsection.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Feature Engineering}{2}{subsection.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.1}Features \& Time Horizons}{2}{subsubsection.2.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Modeling Approach}{2}{subsection.2.3}\protected@file@percent }
+\citation{ke2017lightgbm}
 \citation{chen2021codex}
 \citation{anthropic2024claude}
 \citation{cognition2024devin}
 \citation{peng2023copilot}
-\citation{salton1988term}
-\citation{efron1994introduction}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Methodology}{3}{section.2}\protected@file@percent }
+\newlabel{sec:method}{{2}{3}{Methodology}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Dataset Curation}{3}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Feature Engineering}{3}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.1}Features \& Time Horizons}{3}{subsubsection.2.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Modeling Approach}{3}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Label Audit}{3}{subsection.2.4}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Operational Definitions of Target Variables}}{3}{table.caption.5}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{tab:definitions}{{1}{3}{Operational Definitions of Target Variables}{table.caption.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Label Audit}{3}{subsection.2.4}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Per-Agent Statistics (Rejected PRs with Feedback)}}{3}{table.caption.6}\protected@file@percent }
 \newlabel{tab:agent_stats}{{2}{3}{Per-Agent Statistics (Rejected PRs with Feedback)}{table.caption.6}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Label Audit: ECDF of time from feedback to close.}}{3}{figure.caption.7}\protected@file@percent }
@@ -37,38 +34,42 @@
 \@writefile{toc}{\contentsline {section}{\numberline {3}Results and Analysis}{3}{section.3}\protected@file@percent }
 \newlabel{sec:results}{{3}{3}{Results and Analysis}{section.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}RQ1: Predictability of Effort}{3}{subsection.3.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Model Performance}}{3}{table.caption.8}\protected@file@percent }
-\newlabel{tab:performance}{{3}{3}{Model Performance}{table.caption.8}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Within-Size-Quartile Performance (Addressing Size Tautology)}}{3}{table.caption.9}\protected@file@percent }
-\newlabel{tab:size_controlled}{{4}{3}{Within-Size-Quartile Performance (Addressing Size Tautology)}{table.caption.9}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}RQ2: The Ghosting Phenomenon}{3}{subsection.3.2}\protected@file@percent }
+\citation{salton1988term}
+\citation{efron1994introduction}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Model Performance}}{4}{table.caption.8}\protected@file@percent }
+\newlabel{tab:performance}{{3}{4}{Model Performance}{table.caption.8}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Within-Size-Quartile Performance (Addressing Size Tautology)}}{4}{table.caption.9}\protected@file@percent }
+\newlabel{tab:size_controlled}{{4}{4}{Within-Size-Quartile Performance (Addressing Size Tautology)}{table.caption.9}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Feature Lift Beyond Size: Precision@20\% (Within Quartiles)}}{4}{table.caption.10}\protected@file@percent }
+\newlabel{tab:feature_lift}{{5}{4}{Feature Lift Beyond Size: Precision@20\% (Within Quartiles)}{table.caption.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Model Performance. (a) The model identifies the ``critical few'' PRs (Top-K Utility). (b) Predicted vs Observed Probabilities (Calibration).}}{4}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:model_performance}{{2}{4}{Model Performance. (a) The model identifies the ``critical few'' PRs (Top-K Utility). (b) Predicted vs Observed Probabilities (Calibration)}{figure.caption.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}RQ2: The Ghosting Phenomenon}{4}{subsection.3.2}\protected@file@percent }
 \citation{lundberg2017unified}
 \citation{barke2023grounded}
 \citation{brier1950verification}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Model Performance. (a) The model identifies the ``critical few'' PRs (Top-K Utility). (b) Predicted vs Observed Probabilities (Calibration).}}{4}{figure.caption.10}\protected@file@percent }
-\newlabel{fig:model_performance}{{2}{4}{Model Performance. (a) The model identifies the ``critical few'' PRs (Top-K Utility). (b) Predicted vs Observed Probabilities (Calibration)}{figure.caption.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Regime Characterization. Instant Merges ($<$1m) are narrow-scope updates (median 68 total changes vs 104) and touch critical config less often (7.1\% vs 18.4\%) than Normal PRs.}}{4}{figure.caption.11}\protected@file@percent }
-\newlabel{fig:regimes}{{3}{4}{Regime Characterization. Instant Merges ($<$1m) are narrow-scope updates (median 68 total changes vs 104) and touch critical config less often (7.1\% vs 18.4\%) than Normal PRs}{figure.caption.11}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Interpreting Model Decisions}{4}{subsection.3.3}\protected@file@percent }
-\newlabel{sec:interpretability}{{3.3}{4}{Interpreting Model Decisions}{subsection.3.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Ghosting Analysis. (a) Abandonment rates vary by agent. (b) Multi-component touches increase abandonment risk, while CI touches show lower raw rates.}}{4}{figure.caption.12}\protected@file@percent }
-\newlabel{fig:ghosting_analysis}{{4}{4}{Ghosting Analysis. (a) Abandonment rates vary by agent. (b) Multi-component touches increase abandonment risk, while CI touches show lower raw rates}{figure.caption.12}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Generalization and Robustness}{4}{subsection.3.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Robustness Evaluation}{4}{section.4}\protected@file@percent }
-\newlabel{sec:robustness}{{4}{4}{Robustness Evaluation}{section.4}{}}
 \citation{lebeuf2018software,begel2014analyze}
 \citation{zhang2024rise}
 \citation{security2025risks}
 \citation{arcuri2011practical}
-\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Robustness to Effort Definition}}{5}{table.caption.13}\protected@file@percent }
-\newlabel{tab:robustness}{{5}{5}{Robustness to Effort Definition}{table.caption.13}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion: Towards an Agent-Aware Workflow}{5}{section.5}\protected@file@percent }
-\newlabel{sec:discussion}{{5}{5}{Discussion: Towards an Agent-Aware Workflow}{section.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Ethical Implications}{5}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7}Threats to Validity}{5}{section.7}\protected@file@percent }
-\newlabel{sec:threats}{{7}{5}{Threats to Validity}{section.7}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusion}{5}{section.8}\protected@file@percent }
-\newlabel{sec:conclusion}{{8}{5}{Conclusion}{section.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Regime Characterization. Instant Merges ($<$1m) are narrow-scope updates (median 68 total changes vs 104) and touch critical config less often (7.1\% vs 18.4\%) than Normal PRs.}}{5}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:regimes}{{3}{5}{Regime Characterization. Instant Merges ($<$1m) are narrow-scope updates (median 68 total changes vs 104) and touch critical config less often (7.1\% vs 18.4\%) than Normal PRs}{figure.caption.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Ghosting Analysis. (a) Abandonment rates vary by agent. (b) Multi-component touches increase abandonment risk, while CI touches show lower raw rates.}}{5}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:ghosting_analysis}{{4}{5}{Ghosting Analysis. (a) Abandonment rates vary by agent. (b) Multi-component touches increase abandonment risk, while CI touches show lower raw rates}{figure.caption.13}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Interpreting Model Decisions}{5}{subsection.3.3}\protected@file@percent }
+\newlabel{sec:interpretability}{{3.3}{5}{Interpreting Model Decisions}{subsection.3.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Generalization and Robustness}{5}{subsection.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Robustness Evaluation}{5}{section.4}\protected@file@percent }
+\newlabel{sec:robustness}{{4}{5}{Robustness Evaluation}{section.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Robustness to Effort Definition}}{5}{table.caption.14}\protected@file@percent }
+\newlabel{tab:robustness}{{6}{5}{Robustness to Effort Definition}{table.caption.14}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion: Towards an Agent-Aware Workflow}{6}{section.5}\protected@file@percent }
+\newlabel{sec:discussion}{{5}{6}{Discussion: Towards an Agent-Aware Workflow}{section.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Ethical Implications}{6}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Threats to Validity}{6}{section.7}\protected@file@percent }
+\newlabel{sec:threats}{{7}{6}{Threats to Validity}{section.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusion}{7}{section.8}\protected@file@percent }
+\newlabel{sec:conclusion}{{8}{7}{Conclusion}{section.8}{}}
 \bibstyle{ACM-Reference-Format}
 \bibdata{sample-base}
 \bibcite{security2025risks}{{1}{2025}{{Anonymous et~al\mbox  {.}}}{{}}}
@@ -98,6 +99,6 @@
 \newlabel{tocindent3}{18.198pt}
 \newlabel{tocindent4}{0pt}
 \newlabel{tocindent5}{0pt}
-\@writefile{toc}{\contentsline {section}{References}{6}{section*.15}\protected@file@percent }
-\newlabel{TotPages}{{6}{6}{}{page.6}{}}
-\gdef \@abspage@last{6}
+\@writefile{toc}{\contentsline {section}{References}{8}{section*.16}\protected@file@percent }
+\newlabel{TotPages}{{8}{8}{}{page.8}{}}
+\gdef \@abspage@last{8}
