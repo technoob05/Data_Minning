@@ -1,0 +1,8 @@
+
+\section{Conclusion}
+\label{sec:conclusion}
+As AI agents increasingly enter the software workforce, distinguishing between ``helpful assistant'' and ``high-maintenance intern'' becomes crucial. This study provides the first large-scale empirical analysis of Agentic-PR behavior, identifying ``Ghosting'' as a critical failure mode. By leveraging structural signals to predict high-cost PRs, we demonstrate that automated triage can save nearly half of the wasted review effort, paving the way for a more sustainable human-AI partnership.
+
+\textbf{Ans.\ to RQ1}: Early-stage (T0) signals alone are insufficient (AUC 0.53), but dynamic (T1) signals including interaction and complexity reliably predict high-cost Agentic-PRs (AUC 0.96).
+
+\textbf{Ans.\ to RQ2}: PRs touching CI/build files show \textit{lower} raw ghosting rates (48.5\% vs 65.8\%). However, after controlling for confounders, this association is not statistically significant. Subjective feedback without automated checks remains a risk factor for silent abandonment.

@@ -1,0 +1,38 @@
+{
+    "title": "Replication Package: Early-Stage Prediction of Review Effort in AI-Generated Pull Requests",
+    "description": "Code and scripts to reproduce all results from the MSR 2026 Mining Challenge paper on AI agent PR triage. Includes feature engineering, LightGBM models, robustness checks, and all figures.",
+    "upload_type": "software",
+    "access_right": "open",
+    "license": "MIT",
+    "keywords": [
+        "AI agents",
+        "code review",
+        "pull request triage",
+        "machine learning",
+        "software engineering",
+        "ghosting",
+        "LightGBM",
+        "AIDev dataset",
+        "MSR 2026"
+    ],
+    "communities": [
+        {
+            "identifier": "msr"
+        }
+    ],
+    "related_identifiers": [
+        {
+            "identifier": "https://arxiv.org/abs/2507.15003",
+            "relation": "isSupplementTo",
+            "resource_type": "publication-article",
+            "scheme": "url"
+        }
+    ],
+    "contributors": [
+        {
+            "name": "Anonymous for Review",
+            "type": "Researcher",
+            "affiliation": "MSR 2026 Mining Challenge"
+        }
+    ]
+}

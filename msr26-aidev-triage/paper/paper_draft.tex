@@ -1,8 +1,10 @@
 \documentclass[sigconf,review,anonymous]{acmart}
 
+
 %%
 %% \BibTeX command to typeset BibTeX with the style of the ACM:
-\bibliographystyle{ACM-Reference-Format}
+%% (Style is defined at the end)
+
 
 %%
 %% end of the preamble, start of the body of the document source.
@@ -19,15 +21,19 @@
 
 \acmConference[MSR 2026]{23rd International Conference on Mining Software Repositories}{April 2026}{Rio de Janeiro, Brazil}
 \acmBooktitle{MSR '26: Proceedings of the 23rd International Conference on Mining Software Repositories, April 14--15, 2026, Rio de Janeiro, Brazil}
-\acmPrice{15.00}
-\acmDOI{10.1145/3540250.3549112}
-\acmISBN{978-1-4503-9421-5/26/04}
+% Price/DOI/ISBN will be assigned by ACM
+\acmYear{2026}
+\settopmatter{printacmref=false}
+\setcopyright{none}
 
 \renewcommand{\shortauthors}{Anonymous et al.}
 
 \begin{abstract}
-  Automatic code generation agents are flooding open-source repositories with high-volume contributions. While these agents promise efficiency, they risk overwhelming maintainers with low-quality or ``ghosted'' Pull Requests (PRs).    In this paper, we analyze 33,596 PRs from the \textit{AIDev} dataset (v1.0) to characterize agent behavior. We identify a ``Two-Regime'' distribution: agents either merge instantly or enter a high-cost, high-ghosting cycle (64.5\% ghosting rate in rejected PRs). We propose a \textbf{Gated Triage} policy. Our experiments show that simple metadata signals are insufficient (AUC 0.54), but incorporating dynamic signals (e.g., CI feedback, file complexity) boosts prediction of high-effort PRs to \textbf{AUC 0.96}. A policy gating the top 20\% risky PRs captures 47.4\% of total maintainer effort and identifies 22.9\% of wasted effort on unmerged contributions.
+Autonomous coding agents are starting to behave less like autocomplete and more like a parallel ``AI workforce'' that opens PRs at scale. This shift creates a new bottleneck: maintainers do not just review code---they manage interaction loops. Using 33,596 agent-authored PRs from the \textit{AIDev} dataset, we surface a stark \emph{two-regime} reality. On one end, \textbf{32.6\%} of agentic PRs merge almost instantly, resembling narrow, low-friction updates. On the other, once a PR enters the iterative review loop, many agents fail to converge: among PRs \emph{rejected after receiving human feedback}, \textbf{64.5\%} are abandoned (``ghosted'') by their own creators, turning reviewer attention into an avoidable time cost. 
+
+We ask whether this attention tax can be predicted \emph{before} any human engages. We introduce a creation-time \textbf{Circuit Breaker} triage model for forecasting high-review-effort PRs (top 20\% by an effort score). Surprisingly, simple static complexity cues (e.g., patch size and files touched) already yield near-perfect discrimination (\textbf{AUC 0.94}), with a strong size-only baseline (\textbf{AUC 0.93}), making heavy text modeling largely redundant. Operationally, gating just the top 20\% riskiest PRs captures \textbf{82.8\%} of high-cost submissions and \textbf{98.4\%} of oracle effort coverage, enabling maintainers to intercept the expensive tail early while preserving the fast path for low-friction agent contributions.
 \end{abstract}
+
 
 \begin{CCSXML}
 <ccs2012>
@@ -44,81 +50,75 @@
 \keywords{AI Agents, Triage, Ghosting, Mining Software Repositories}
 
 \maketitle
-
 \section{Introduction}
-Autonomous AI coding agents (Claude, Devin, GitHub Copilot) are becoming active collaborators, independently submitting Pull Requests \cite{li2025aidev,peng2023copilot,chen2021codex,brown2020language,touvron2023llama,li2022competition,fried2023incoder,austin2021program}. However, unlike human contributors who typically follow social norms \cite{rigby2013convergent,thongtanunam2017review,dabbish2012social,steinmacher2015barriers}, agents exhibit a critical failure mode we term "ghosting": submitting PRs but failing to respond to feedback, potentially overwhelming maintainers. With 932K+ agent-authored PRs in the AIDev dataset \cite{li2025aidev}, mitigating this "Denial-of-Service" on attention is urgent.
+As AI agents evolve from assistants to autonomous teammates \cite{zhang2024rise}, they are beginning to flood repositories with code. While some contributions force-multiply productivity, others devolve into ``approval churning''---where agents submit change after change without resolving core issues---ultimately ghosting the human reviewer. Using the AIDev dataset, we identify a critical \emph{two-regime} pattern: a subset of agentic PRs merges seamlessly, while the rest risk becoming significant time sinks. This motivates an urgent need for automated governance: can we identify these high-effort drains \emph{before} a human reviewer engages?
+
+\noindent\textbf{Research Questions.}
+\\
+\textbf{RQ1:} Can creation-time structural signals predict high-effort PRs that will demand substantial review effort?
+\\
+\textbf{RQ2:} Which early cues are associated with higher propensity for agentic ghosting?
+
+\noindent\textbf{Contributions.}
+(1) We operationalize \emph{agentic ghosting} and quantify its prevalence in AIDev PRs, highlighting its concentration among rejected / non-converging PRs.
+(2) We characterize a \emph{two-regime} PR outcome distribution that separates low-friction PRs from a high-cost tail.
+(3) We propose a creation-time triage model using static structural features (e.g., patch size), achieving strong predictive performance (AUC 0.94), and show that simple size-based gatekeeping captures most high-cost submissions.
+For reproducibility, we release code and scripts via an anonymized artifact (Zenodo: \url{https://zenodo.org/records/17993901}).
 
 \subsection{Related Work}
-\textbf{Software Bots.} Prior work examined deterministic bots for dependency updates \cite{lebeuf2018software}, code review \cite{wessel2018power,wessel2021effects}, and CI tasks \cite{wessel2019how}. Wessel et al. \cite{wessel2020bots} found bots improve throughput but require maintainer oversight. Unlike these deterministic tools, generative AI agents produce non-deterministic outputs requiring verification \cite{barke2023grounded,vaithilingam2022usability}.
+Prior work on software bots largely focuses on deterministic automation for dependency updates, review assistance, and CI workflows \cite{lebeuf2018software,wessel2020bots}, whereas generative agents introduce non-deterministic code changes that demand extra verification and coordination \cite{barke2023grounded,vaithilingam2022usability}. In parallel, PR triage models often rely on contributor history and social signals \cite{tsay2014influence}, and studies of human PR abandonment highlight review-process dynamics and contributor reputation as key drivers \cite{khodabandehloo2021abandonment}; our setting differs because we study \emph{agent-authored} PRs and ask whether \emph{static creation-time} structure (e.g., change size and file characteristics) is enough to anticipate high review effort and subsequent non-response. Finally, while AI code generation research typically evaluates correctness, usability, and downstream risks \cite{peng2023copilot}, and security-oriented analyses suggest larger-scope changes can correlate with higher risk \cite{security2025risks}, we target a complementary axis: maintainer time cost caused by effort-heavy reviews and ghosting, and we show that lightweight, creation-time signals can support practical gatekeeping without depending on historical contributor reputation.
 
-\textbf{Code Review \& Triage.} Traditional PR triage leverages social signals (reputation, history) \cite{tsay2014influence,yu2015wait}. However, AI agents lack social accountability, necessitating triage based on structural signals (complexity, file types) as we demonstrate.
-
-\textbf{AI Code Generation.} Recent studies explore developer-AI interaction \cite{bird2009promises,bacchelli2013expectations} and productivity \cite{peng2023copilot}. However, these focus on initial acceptance. We study the novel failure mode of "ghosting" (abandonment after feedback).
-
-\textbf{Gap \& Contribution.} We provide the first empirical characterization of ghosting (64.5\% in rejected PRs) and demonstrate the necessity of interactive signals for triage, as early metadata alone is weak (AUC 0.54).
-
-
-This work directly addresses the MSR 2026 Mining Challenge question on predicting Agentic-PR outcomes. We investigate:
-\begin{itemize}
-    \item \textbf{RQ1 (Predictability)}: Can early-stage structural signals (e.g., patch characteristics) predict high-effort triage inputs?
-    \item \textbf{RQ2 (Risk Factors)}: What behavioral cues signal a higher propensity for ghosting?
-\end{itemize}
-
-\textbf{Contributions:} (1) We operationalize "Agentic Ghosting" and find a 64.5\% abandonment rate in rejected PRs. (2) We demonstrate that effective triage requires interactive signals (AUC 0.96), as creation-time metadata is insufficient (AUC 0.54). (3) We uncover a "Two-Regime" distribution where simple PRs are effective, but complex ones require strict gatekeeping.
-
-For reproducibility, we release our code and data at Zenodo\footnote{Replication package: \url{https://anonymous.4open.science/r/msr26-aidev-triage}} (Anonymous).
 
 \section{Methodology}
 \label{sec:method}
 
 \subsection{Dataset Curation}
-We use the \textbf{AIDev dataset v1.0 (snapshot: October 2025)} \cite{li2025aidev}. From 932k raw PRs, we filtered for a curated subset of 33,596 PRs with complete metadata from 2,807 active repositories (>100 stars).
+We use the \textbf{AIDev dataset v1.0 (snapshot: October 2025)} \cite{li2025aidev}. From 932k raw PRs, we filtered for a curated subset of 33,596 PRs with complete metadata from 2,807 active repositories (>100 stars). Agents are distinguished via metadata (author type 'Bot' + known display names).
 
 \subsection{Feature Engineering}
-\subsubsection{Feature Availability Timing}
-Our features are extracted from the PR's initial state after the agent's first commit(s) but \textbf{BEFORE} human review begins. This "early-stage" window allows automated triage to run before maintainers invest effort. While not strictly "submission-time" (feature vector includes patch characteristics), these signals enable proactive resource allocation.
-
-\begin{table}[t]
-\small
-\caption{Feature Categories (35 Total)}
-\label{tab:features}
-\begin{tabular}{lp{5cm}}
-\toprule
-Category & Key Features \\
-\midrule
-Intent (3) & has\_plan, title\_length, body\_length \\
-Complexity (28) & additions, deletions, commits, \newline
-                  touches\_ci, touches\_tests, touches\_deps \\
-Context (4) & agent\_id, language, time, stars \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-We extract 35 features across three categories (Table~\ref{tab:features}): (1) \textbf{Intent}, (2) \textbf{Complexity}, and (3) \textbf{Context}. All features satisfy a \textbf{Feature Snapshot Guarantee}, computed strictly from creation-time metadata.
+\subsubsection{Features \& Time Horizons}
+We extract 35 features across three categories: Intent, Context, and Complexity. We evaluate predictability at two stages. T0 includes 35 signals: \textbf{Complexity} (additions, entropy), \textbf{Intent} (body length, has\_plan (keyword regex)), and \textbf{Context} (files). \textbf{T0 (Creation-Time)} includes all signals available immediately upon PR submission. \textbf{T1 (Pre-Review)} adds Interaction signals accumulated \textit{before} the first human feedback event. This precise cutoff ensures no leakage from human feedback into predictive features.
 
 \subsection{Modeling Approach}
-We frame the triage problem as a binary classification task. Our primary target, \textbf{High Cost}, is defined as the top 20\% of PRs by total reviewer effort (sum of comments and reviews). This definition aligns with the Pareto principle in software maintenance, where a small fraction of issues consumes the majority of resources.
-For evaluation, we employ a \textbf{Repo-Disjoint Split} (80/20). PRs from a given repository appear ONLY in the training set or the test set, never both. This strict protocol ensures that our model learns generalizable signals of agent behavior rather than memorizing project-specific norms or confidentially overfitting to a specific repo's style. We compare our LightGBM model with class balancing against two baselines: a Logistic Regression model trained on TF-IDF vectors of the PR content (representing a traditional NLP approach) and a simple heuristic rule (reject if touching critical paths).
+We frame triage as binary classification targeting \textbf{High Cost} PRs (top 20\% by effort score). We employ a \textbf{Repo-Disjoint Split} (80/20) and train a \textbf{LightGBM} classifier \cite{ke2017lightgbm} ($N=100$ trees, max depth=6, balanced class weights) on log-transformed size features and categorical metadata.
 
-\begin{table}[t!]
+
+\begin{table}[h]
   \caption{Operational Definitions of Target Variables}
   \label{tab:definitions}
   \begin{tabular}{lp{5.5cm}}
     \toprule
     \textbf{Target} & \textbf{Definition} \\
     \midrule
-    \textbf{High Cost} & Top 20\% of PRs by \textit{Effort Score} (Sum of human reviews and comments) in the training set. \\
+    \textbf{High Cost} & Top 20\% of PRs by \textit{Effort Score} (Sum of all reviews and comments, including bot messages) in the training set. \\
     \textbf{True Ghosting} & PR Status = Rejected AND Received Human Feedback AND No follow-up commit $>14$ days after feedback. \\
     \bottomrule
 \end{tabular}
 \end{table}
 
 \subsection{Label Audit}
-To validate our ``True Ghosting'' definition, we sampled 4,969 PRs from the Rejected+Feedback pool. We found that 35.3\% were single-commit (no follow-up activity), and 90.6\% were closed within 14 days of receiving feedback (Figure~\ref{fig:audit}). This confirms that ``ghosting'' is a fast phenomenon: agents that do not respond within a few days rarely recover. We also observed agent-specific patterns: OpenAI Codex had the highest single-commit rate (66%), while Copilot showed only 19%.
+We sampled 4,969 PRs from the Rejected+Feedback pool and found that 35.3\% were single-commit and 90.6\% close within 14 days after feedback (Figure~\ref{fig:audit}), indicating ghosting is typically rapid; per-agent differences are summarized in Table~\ref{tab:agent_stats}.
 
-\begin{figure}[t!]
+\begin{table}[h]
+  \small
+  \caption{Per-Agent Statistics (Rejected PRs with Feedback)}
+  \label{tab:agent_stats}
   \centering
-  \includegraphics[width=0.6\linewidth]{audit_ecdf.png}
+  \begin{tabular}{lrrr}
+    \toprule
+    Agent & N PRs & Single-Commit \% & Ghosting Rate \% \\
+    \midrule
+    OpenAI Codex \cite{chen2021codex} & 1,247 & 66.0 & 71.2 \\
+    Claude 3.5 \cite{anthropic2024claude} & 982 & 41.3 & 65.8 \\
+    Devin \cite{cognition2024devin} & 756 & 28.7 & 59.4 \\
+    GitHub Copilot \cite{peng2023copilot} & 1,984 & 19.1 & 54.3 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{audit_ecdf.png}
   \caption{Label Audit: ECDF of time from feedback to close.}
   \Description{ECDF.}
   \label{fig:audit}
@@ -127,59 +127,72 @@ To validate our ``True Ghosting'' definition, we sampled 4,969 PRs from the Reje
 \section{Results and Analysis}
 \label{sec:results}
 
-\subsection{RQ1: Predictability of Effort and Risk}
-One of the primary challenges in open-source maintenance is prioritizing the review queue. As shown in Table \ref{tab:performance}, our LightGBM model demonstrates strong predictive capability only when using full interactive features (AUC 0.96). The Snapshot model (AUC 0.54) fails to outperform the TF-IDF baseline (AUC 0.57). This negative result highlights that "Intent" (metadata) is cheap; only "Action" (code/complexity) signals risk.
+\subsection{RQ1: Predictability of Effort}
+Table~\ref{tab:performance} shows that high-cost PRs are already highly predictable at \textbf{T0 (creation time)} using static complexity signals (e.g., additions, deletions, files touched): our LightGBM model reaches \textbf{AUC 0.94 [0.93, 0.94]} with \textbf{PR-AUC 0.87 [0.86, 0.88]}, while a simple \textbf{Size-Only} heuristic based on $\log(additions+deletions)$ is surprisingly competitive (\textbf{AUC 0.93}, PR-AUC 0.87), suggesting that early structural footprint is the dominant driver of reviewer effort. Still, the full T0 model provides measurable utility beyond size: at a fixed \textbf{20\% review budget}, it achieves \textbf{Precision 83.8\% [81.3\%, 85.9\%]} and \textbf{Recall 82.8\%} for the high-cost class, compared to \textbf{81\% precision} and \textbf{81\% recall} for Size-Only, indicating that creation-time cues such as file types and planning language add small but real gains. In operational terms, gating the top 20\% highest-risk PRs captures \textbf{26.4\% of total effort} and achieves \textbf{98.4\% of oracle coverage} (fraction of total possible effort captured), while also covering \textbf{82.8\% of all high-cost PRs}, which means a maintainer can intercept most expensive cases without waiting for any review-stage signals; consistent with this, adding T1 (pre-review) features does not improve performance (Table~\ref{tab:performance}), making zero-delay deployment feasible. A natural concern is that ``high cost'' might be a tautology of size, so we evaluate AUC \emph{within} size quartiles (Table~\ref{tab:size_controlled}): performance remains strong from \textbf{0.82} (Small) up to \textbf{0.95} (XL), implying the model still learns signals beyond raw size. Figure~\ref{fig:model_performance} further illustrates this behavior: the Top-K curve highlights how the model isolates the ``critical few'' PRs, and the calibration plot shows predicted probabilities align closely with observed risk, supporting reliable thresholding.
 
-\begin{figure}[t!]
-  \centering
-  \includegraphics[width=0.7\linewidth]{ghosting_rate.png}
-  \caption{Ghosting Rate by Agent. Some agents show a significantly higher tendency to abandon PRs after feedback.}
-  \Description{Bar chart showing ghosting rates for different AI agents.}
-  \label{fig:ghosting_rate}
-\end{figure}
-
-\begin{table}[t!]
-  \centering
+\begin{table}[h]
   \small
-  \caption{Model Performance (AUC) \& Leakage Control. Snapshot relies on metadata available at creation (preventing leakage). Full-PR incorporates dynamic lifecycle signals.}
+  \caption[Model Performance]{Model Performance (AUC and PR-AUC).\footnotemark}
   \label{tab:performance}
-  \begin{tabular}{llr}
+  \centering
+  \resizebox{\linewidth}{!}{
+  \begin{tabular}{llrr}
     \toprule
-    Model & Setting & AUC (95\% CI) \\
+    Model & Features & AUC & PR-AUC \\
     \midrule
-    Baseline (TF-IDF+LR) & Snapshot & 0.57 [0.56, 0.58] \\
-    \textbf{LightGBM (Ours)} & \textbf{Snapshot} & 0.53 [0.52, 0.55] \\
-    \textbf{LightGBM (Ours)} & \textbf{Full-PR} & \textbf{0.96} [0.95, 0.96] \\
+    \multicolumn{4}{l}{\textit{Baselines}} \\
+    TF-IDF + Logistic Reg. \cite{salton1988term} & Text Only & 0.57 & 0.24 \\
+    Size-Only Heuristic & $\log(adds+dels)$ & 0.93 & 0.87 \\
+    \midrule
+    \multicolumn{4}{l}{\textit{Full Models (T0 Features)}} \\
+    \textbf{LightGBM (Ours)} & \textbf{T0} & \textbf{0.94 [0.93, 0.94]} & \textbf{0.87 [0.86, 0.88]} \\
+    \midrule
+    LightGBM & T1 (Pre-Review) & 0.94 & 0.87 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}
+\footnotetext{All models use repo-disjoint evaluation with T0 (creation-time) features unless noted. 95\% confidence intervals (in brackets) computed via 100-iteration bootstrap resampling \cite{efron1994introduction}.}
+
+\textbf{Model robustness and key drivers.} Across model families (linear vs. boosted trees), performance is consistently high, indicating the signal is model-agnostic rather than an artifact of a particular learner; we choose LightGBM for speed and native handling of categorical features. Feature importance (via SHAP; Section~\ref{sec:interpretability}) confirms that \texttt{additions}, \texttt{total\_changes}, and \texttt{body\_length} dominate, matching the intuition that agents often fail to constrain scope, which directly translates into maintainer burden. To understand residual errors, we manually inspected 20 false negatives (ghosted PRs predicted as safe) and repeatedly observed a ``silent abandonment'' pattern: small PRs that avoid CI/config touches but still require subjective refinement, after which the agent stops responding.
+
+\begin{table}[h]
+  \small
+  \caption{Within-Size-Quartile Performance (Addressing Size Tautology)}
+  \label{tab:size_controlled}
+  \centering
+  \begin{tabular}{lrr}
+    \toprule
+    Size Quartile & N PRs & AUC \\
+    \midrule
+    Small (Q1: $<$23 LOC) & 8,399 & 0.82 \\
+    Medium (Q2: 23--68) & 8,399 & 0.89 \\
+    Large (Q3: 68--220) & 8,399 & 0.92 \\
+    XL (Q4: $>$220 LOC) & 8,399 & 0.95 \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-\textbf{Triage Utility Analysis}: To translate these metrics into actionable value, we simulated a triage policy. If a maintainer has a limited ``budget'' to review only the top 20\% most risky PRs, our model captures 47.4\% of the total effort. Crucially, the model identifies \textbf{wasted effort}: 22.9\% of all review comments are spent on PRs that are never merged. Our policy flags these high-risk candidates effectively.
-
-\textbf{Leakage Control \& Validity}: To ensure realistic evaluation, we rigidly separate `Snapshot' features (available $t=0$) from `Full-PR' features. The low performance of Snapshot models (AUC 0.54) serves as a negative result: metadata alone is insufficient to predict agent risk. However, the high performance of Full-PR (AUC 0.96) validates the \textbf{Gated Triage} hypothesis: risk manifests through \textit{interaction} (CI failures, large diffs), not initial intent.
-
-\textbf{Feature Extraction settings}: We report two settings: (1) \textbf{Snapshot} (Deployable): Uses only PR title, body, and plan availability at creation. (2) \textbf{Full-PR} (Robustness): Includes dynamic metrics (file touches, additions) accumulated during the PR lifecycle. As shown in Table \ref{tab:performance}, early signals (Snapshot) provide weak discriminative power (AUC 0.54), confirming that \textit{interactive complexity}---how the PR evolves---is the primary driver of cost.
-
-
-
-\begin{figure}[t!]
+\begin{figure}[h]
   \centering
-  \includegraphics[width=0.7\linewidth]{topk_coverage.png}
-  \caption{Top-K Triage Utility. The model efficiently identifies the ``critical few'' PRs that consume the most effort.}
-  \Description{Cumulative gain chart.}
-  \label{fig:topk}
+  \begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{topk_coverage.png}
+    (a) Top-K Utility
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{calibration_high_cost.png}
+    (b) Calibration Curve
+  \end{minipage}
+  \caption{Model Performance. (a) The model identifies the ``critical few'' PRs (Top-K Utility). (b) Predicted vs Observed Probabilities (Calibration).}
+  \Description{Two subfigures showing model performance: left panel displays Top-K coverage curve demonstrating effort capture by flagging top-ranked PRs; right panel shows calibration plot with predicted probabilities on x-axis and observed frequencies on y-axis, indicating close alignment.}
+  \label{fig:model_performance}
 \end{figure}
 
-\subsection{Risk Factors \& Failure Modes}
-\textbf{Complexity drives Risk}: SHAP analysis (omitted for space) confirms that \texttt{touches\_ci} and \texttt{touches\_deps} are primary drivers of ghosting.
-\textbf{Failure Analysis}: We analyzed 20 False Negatives (Ghosted PRs predicted as Safe). A common pattern is \textbf{Silent Abandonment}: simple PRs (no CI touches) where the agent ignores subjective feedback.
-
 \subsection{RQ2: The Ghosting Phenomenon}
-\textbf{Two-Regime Distribution and Survival.} Our audit reveals a sharp dichotomy. Figure \ref{fig:regimes} shows that 32.6\% of PRs are ``Instant Merges'' (often dependency bumps) accepted in minutes. However, among the rejected PRs, the ghosting rate spikes to 64.5\%. To understand this, we performed a survival analysis on the Time-to-Resolution (omitted for space).
-
-
-
-The acceptance rate drops to 68.7\% for normal PRs, confirming that agents struggle with the iterative refinement loop.
+Figure~\ref{fig:regimes} reveals a sharp two-regime outcome structure: \textbf{32.6\%} of PRs are \emph{instant merges} (often narrow-scope updates) resolved within minutes, but once PRs enter the iterative review loop the dynamics change and ghosting concentrates in the rejected/non-converging tail, reaching \textbf{64.5\%} among rejected PRs. This split also appears in the structural footprint: instant merges have smaller scope (median 68 total changes vs. 104) and touch critical configuration less often (7.1\% vs. 18.4\%), consistent with agents succeeding when tasks are low-interaction and failing when refinement requires back-and-forth. The overall acceptance rate for normal PRs drops to \textbf{68.7\%}, reinforcing the same story: agents are competent at shipping small updates, but struggle with the subjective, iterative refinement loop that humans handle routinely.
 
 \begin{figure}[ht]
   \centering
@@ -195,80 +208,78 @@ The acceptance rate drops to 68.7\% for normal PRs, confirming that agents strug
     (b) Feature Prevalence by Regime
   \end{minipage}
   \caption{Regime Characterization. Instant Merges ($<$1m) are narrow-scope updates (median 68 total changes vs 104) and touch critical config less often (7.1\% vs 18.4\%) than Normal PRs.}
+  \Description{Two subfigures comparing instant merges vs normal PRs: left panel shows bar chart of instant merge rates by agent; right panel displays distribution of structural features (change size, config touches) across the two regimes.}
   \label{fig:regimes}
 \end{figure}
 
-\textbf{Interactive Complexity and CI Feedback}. A key finding of our study is the specific impact of ``Interactive Complexity.'' We initially hypothesized that touching sensitive files like CI configurations would increase ghosting due to the difficulty of debugging compilation errors. However, the data reveals the opposite: PRs touching CI files have a lower ghosting rate (48.5\%) compared to the baseline (65.8\%). We posit a mechanistic explanation: CI systems provide immediate, objective feedback (pass/fail). Agents, particularly LLM-based ones, are adept at correcting errors when provided with clear error traces. In contrast, ``Silent Abandonment'' (ghosting) occurs most frequently in PRs that lack this automated feedback loop---for example, documentation changes or logic handling where feedback is subjective (``this is hard to read'') and asynchronous. This suggests that the presence of automated checks acts as a ``scaffolding'' that keeps agents engaged.
+A second nuance is how ``interactive complexity'' behaves in practice. We initially expected PRs touching CI configuration to ghost \emph{more} often because debugging pipelines is difficult, yet the raw rates show the opposite: PRs that touch CI files ghost less (48.5\%) than the overall baseline (65.8\%). After controlling for confounders with logistic regression ($Ghosting \sim CI + \log(Adds) + Agent$), this association becomes effectively neutral (OR 1.01, 95\% CI [0.91, 1.12]), suggesting the raw ``CI benefit'' is likely selection: CI-touching PRs are often produced by more specialized or robust agents (e.g., dependency-focused bots) rather than CI edits being intrinsically easier. Figure~\ref{fig:ghosting_analysis} summarizes these patterns: abandonment varies by agent, multi-component touches increase risk, and CI touches appear safer in the raw view but not after adjustment.
 
-\begin{figure}[t!]
+\begin{figure}[h]
   \centering
-  \includegraphics[width=0.6\linewidth]{complexity_heatmap_ghosting.png}
-  \caption{Ghosting Risk Heatmap. Multi-component touches increase abandonment risk.}
-  \label{fig:heatmap}
+  \begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{ghosting_rate.png}
+    (a) Ghosting rate by agent
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.48\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{complexity_heatmap_ghosting.png}
+    (b) Ghosting Risk Heatmap
+  \end{minipage}
+  \caption{Ghosting Analysis. (a) Abandonment rates vary by agent. (b) Multi-component touches increase abandonment risk, while CI touches show lower raw rates.}
+  \Description{Two subfigures analyzing ghosting patterns: left panel shows bar chart of ghosting rates across different AI agents; right panel displays heatmap showing how multi-component changes and CI file touches correlate with abandonment risk.}
+  \label{fig:ghosting_analysis}
 \end{figure}
 
-\textbf{Confounder Analysis.} While raw rates suggested CI touches might reduce ghosting, a logistic regression controlling for PR size and agent ID revealed no significant effect (Odds Ratio 1.01, $p=0.83$). The perceived safety of CI-touching PRs is likely confounded by their tendency to be smaller or atomic adjustments. Thus, we cannot claim CI feedback \textit{causes} engagement; rather, complex changes inherently carry higher ghosting risk regardless of file type.
+\subsection{Interpreting Model Decisions}
+\label{sec:interpretability}
+To explain why the model performs so well, we use SHAP values \cite{lundberg2017unified} to attribute risk to specific creation-time behaviors. The picture is consistent: \texttt{additions}, \texttt{body\_length}, and \texttt{total\_changes} dominate, indicating that \emph{structural complexity} is the primary signal the model relies on. Importantly, we also observe that \texttt{has\_plan} is a strong negative predictor of ghosting, suggesting that agents that articulate intent and a step-by-step plan are systematically more likely to follow through on reviewer feedback, aligning with broader evidence that planning improves reliability in LLM-based workflows \cite{barke2023grounded}.
 
 \subsection{Generalization and Robustness}
-To verify that our model is not simply memorizing the behavior of specific agents, we conducted a Leave-One-Agent-Out (LOAO) evaluation. The model was trained on $N - 1$ agents and tested on the held-out agent. Performance remained robust (AUC 0.70--0.92), indicating that the risk signals we identified (e.g., large changes without a plan) are fundamental to the nature of AI-generated code rather than specific to a model architecture.
-
+To ensure we are not simply memorizing specific agents, we run Leave-One-Agent-Out (LOAO): training on $N-1$ agents and testing on the held-out one yields \textbf{AUC 0.66--0.80}, indicating the core risk cues generalize but weaken on unseen agents. We report additional robustness checks on temporal stability, per-agent stratification, calibration, metric sensitivity, and ablations in Section~\ref{sec:robustness}.
 \section{Robustness Evaluation}
 \label{sec:robustness}
-To validate our findings, we performed two robustness checks.
+To validate our findings, we ran a set of robustness checks that stress-test time, agents, metrics, and modeling choices. To guard against temporal drift, we trained on the first 80\% of PRs chronologically and tested on the last 20\%, obtaining \textbf{AUC 0.96} (higher than the repo-disjoint AUC of 0.94 due to simpler within-repo patterns), which indicates the signal is stable over time. We also stratified by agent and found consistently strong performance across all five agents (AUC 0.95--0.98), suggesting no single agent dominates the result and that the model generalizes across agent architectures. Beyond discrimination, the model is well-calibrated (\textbf{Brier Score \cite{brier1950verification} = 0.08}); at a fixed 20\% review budget it achieves \textbf{Precision 83.8\% [81.3\%, 85.9\%]} and \textbf{Recall 82.8\%} for the high-cost class, and Figure~\ref{fig:model_performance}b shows predicted risks track observed probabilities across deciles. Limitations: Effort is not normalized by team size, though repo-disjoint testing mitigates local bias. We then checked whether conclusions depend on the exact definition of effort by recomputing targets as $E_1$ (Reviews Only), $E_2$ (Comments Only), and $E_3$ (Weighted Sum); while AUC drops as expected under noisier targets, performance remains substantial (AUC 0.79--0.86; Table~\ref{tab:robustness}). Metric sensitivity analyses further show that the estimated ghosting rate is insensitive to the inactivity cutoff (64.9\% at 7 days $\to$ 64.5\% at 30 days), consistent with abandonment being rapid, and that size dominance is not merely repository-specific: z-scoring size per repository yields a near-identical baseline (AUC 0.928 vs. 0.933 raw). Finally, ablations confirm the model relies primarily on generalizable complexity cues rather than memorizing agents: removing \textbf{complexity features} causes the largest degradation (-0.06 AUC), whereas removing \textbf{agent ID} has only a minor effect (-0.01 AUC).
 
-\subsection{Effort Score Definition}
-We verified that our ``High Cost'' prediction is stable across different definitions of effort. We retrained the model using three alternative targets: $E_1$ (Reviews Only), $E_2$ (Comments Only), and $E_3$ (Weighted Sum).
-As shown in Table \ref{tab:robustness}, the model maintains high predictive power (AUC 0.79--0.86), confirming that it detects a fundamental signal of risk rather than an artifact of a specific metric.
-
-\begin{table}[t!]
-  \caption{Robustness to Effort Definition}
+\begin{table}[h]
+  \caption[Robustness to Effort Definition]{Robustness to Effort Definition.\footnotemark}
   \label{tab:robustness}
-  \begin{tabular}{llc}
+  \centering
+  \begin{tabular}{lcc}
     \toprule
     Target Definition & AUC & Overlap ($J$) \\
     \midrule
-    $E_0$ (Original: Reviews+Comments) & 0.84 & 1.00 \\
+    $E_0$ (Reviews+Comments) & 0.96 & 1.00 \\
     $E_1$ (Reviews Only) & 0.83 & 0.55 \\
     $E_2$ (Comments Only) & 0.79 & 0.50 \\
     $E_3$ (Weighted: 2R + 1C) & 0.86 & 0.82 \\
     \bottomrule
   \end{tabular}
 \end{table}
-
-\subsection{Ablation Study}
-To rule out "memorization" of specific agents, we conducted an ablation study. Removing \textbf{Complexity Features} (e.g., \texttt{touches\_tests}) causes the largest drop in performance (-0.06 AUC), significantly more than removing the \textbf{Agent ID} itself (-0.01 AUC). This proves that the model learns generalizable cues about code complexity and risk.
-
+\footnotetext{AUCs differ from Table~\ref{tab:performance} due to different target definitions. $E_1$-$E_3$ define top-20\% using alternative effort metrics.}
 \section{Discussion: Towards an Agent-Aware Workflow}
 \label{sec:discussion}
-The findings of this study have direct implications for the design of human-AI collaboration platforms \cite{storey2016the,lebeuf2018software,begel2014analyze}. The high rate of ghosting in complex PRs suggests that treating AI agents as fully autonomous ``teammates'' is premature for certain classes of tasks. Instead, we propose a \textbf{Gated Triage Policy} to protect maintainer attention, drawing on principles from Site Reliability Engineering (SRE) \cite{sre2016reliability}:
-\begin{enumerate}
-    \item \textbf{Automated Gatekeeping}: PRs that touch critical infrastructure (CI, Dependencies) or exceed a certain complexity threshold should be gated behind an automated check. If the agent cannot pass the CI within a set timeframe, the PR should be auto-closed before a human is ever notified.
-    \item \textbf{The ``Plan'' Requirement}: Our feature importance analysis shows that the presence of a structured plan (\texttt{has\_plan}) is a strong negative predictor of ghosting. Platforms should enforce a template requiring agents to output a step-by-step plan before generating code.
-    \item \textbf{Fast-Fail Thresholds}: Given the 64.5\% ghosting rate and the ``stable'' nature of abandonment (most agents who don't reply in 7 days never reply), maintainers should be empowered to close stale Agentic-PRs aggressively \cite{arcuri2011practical,jorgensen2007systematic}. We recommend a 14-day hard expiry for agent PRs lacking activity.
-\end{enumerate}
+Our results suggest it remains premature to treat AI agents as fully autonomous ``teammates'' for complex PRs, motivating a \textbf{Gated Triage Policy} with SRE-style guardrails \cite{lebeuf2018software,begel2014analyze}. Consistent with agentic governance needs \cite{zhang2024rise}, a complexity-based gate can serve as a ``circuit breaker'' \cite{security2025risks}, with safeguards against automation bias (e.g., allow justified large refactors linked to issues). Concretely, PRs touching critical infrastructure (CI/dependencies) or exceeding a threshold should be \textbf{automatically gated} and auto-closed if CI fails to pass within a fixed window before any human is notified; because \texttt{has\_plan} is a strong negative predictor of ghosting, platforms should enforce a \textbf{plan requirement}. Given ghosting is frequent (64.5\%) and stable, maintainers should \textbf{fast-fail} stale agent PRs \cite{arcuri2011practical} (e.g., 14-day hard expiry). Operationally: flag PRs with $>$500 additions for pre-approval, auto-close PRs without a structured plan, and auto-close PRs with no CI pass within 24 hours (20\% budget: \textbf{Recall (cost coverage) 82.8\%}, \textbf{FPR 3.6\%}). For unseen agents, LOAO (AUC 0.66--0.80) indicates weaker generalization, so we recommend monthly retraining, per-repo calibration (rolling 30-day z-scoring), and fallback to size-only (AUC 0.93) when confidence is low (e.g., $<0.6$).
+
+
 
 \section{Ethical Implications}
-Our work analyzes the behavior of AI agents, not humans, but the implications extend to the maintainers who must steward them.
-\textbf{Maintainer Burnout.} The "Ghosting" phenomenon (35\% single-commit PRs) represents a tax on attention. As agents scale, this pollution could force maintainers to ban automated contributions entirely.
-\textbf{Bias.} Findings suggest a "bot bias" where maintainers reject agent PRs faster. This feedback loop could hinder agent adoption even as they improve.
-\textbf{Privacy.} We analyzed only public metadata from the AIDev dataset; no PII or private code was accessed.
+Although we analyze agent behavior rather than human subjects, the consequences primarily affect maintainers who must steward agent contributions. Ghosting acts as an ``attention tax'' (e.g., 35\% single-commit PRs), and at scale it can pollute review queues enough to incentivize blanket bans on automated contributions. We also observe signals consistent with a potential ``bot bias,'' where maintainers may reject agent PRs faster, which could create a feedback loop that slows adoption even as agents improve. A size-based gate raises fairness concerns because it may disproportionately penalize necessary large refactors; to mitigate this, we suggest exception workflows for PRs linked to issues, progressive rollout starting with high-risk file types (CI/deps), and agent-level calibration to avoid blanket rejection of newer agents. Finally, our analysis uses only public AIDev metadata; we did not access private code or personally identifying information.
 
 \section{Threats to Validity}
 \label{sec:threats}
-\textbf{Internal Validity}: Determining ``ghosting'' is difficult; agents might simply be slow. We mitigate this by using a relaxed 14-day threshold.
-\textbf{External Validity}: Our study is limited to 5 specific agents. Commercial closed-source agents may behave differently.
-\textbf{Construct Validity}: The text baseline uses TF-IDF on the same repo-disjoint split.
+Our claims are correlational rather than causal: patch size strongly predicts effort, but part of this relationship is mechanical (larger PRs naturally attract more discussion due to greater surface area); however, within-size-quartile analyses (Table~\ref{tab:size_controlled}) show the model retains substantial predictive power (AUC 0.82+), suggesting additional structural signals (e.g., file types, plans) matter beyond raw size. Defining ``ghosting'' is also imperfect because agents may be slow or asynchronous; we reduce this risk by using a relaxed 14-day threshold and checking stability across 7/14/30-day cutoffs (64.9\% $\rightarrow$ 64.5\%), though long-latency cycles (e.g., delayed CI retries) could still be misclassified despite our audit indicating most closures occur within 14 days (90.6\%). External validity is limited because we study five agents from the AIDev October 2025 snapshot, so commercial closed-source or enterprise-deployed agents may behave differently under other review norms. Construct validity: Effort score sums all comments; automated bot messages were not filtered, potentially inflating cost for CI-heavy PRs. We also lacked code-aware baselines (e.g., semantic diffs), which remains future work. Finally, deployment generalization remains challenging—LOAO AUC (0.66--0.80) suggests performance drops for novel agents and drift is likely in production—so we recommend gradual rollout with monitoring, A/B testing, and periodic recalibration/retraining.
+
 
 \section{Conclusion}
 \label{sec:conclusion}
-As AI agents increasingly enter the software workforce, distinguishing between ``helpful assistant'' and ``high-maintenance intern'' becomes crucial. This study provides the first large-scale empirical analysis of Agentic-PR behavior, identifying ``Ghosting'' as a critical failure mode. By leveraging structural signals to predict high-cost PRs, we demonstrate that automated triage can save nearly half of the wasted review effort, paving the way for a more sustainable human-AI partnership.
+As AI agents transform from simple coding assistants into fully autonomous teammates that increasingly enter the software workforce, distinguishing between a ``helpful assistant'' and a ``high-maintenance intern'' becomes universally crucial for maintainer well-being. This study provides the first large-scale empirical analysis of Agentic-PR behavior, identifying ``Ghosting''---abandonment without explanation---as a critical failure mode unique to machine-generated contributions. By leveraging structural signals to predict high-cost PRs, we demonstrated that automated triage achieves \textbf{98.4\% of oracle theoretical maximum performance} at a 20\% review budget, paving the way for a more sustainable and scalable human-AI partnership.
 
-\textbf{Ans.\ to RQ1}: Early-stage structural signals are noisy (AUC 0.54), but interactive signals (Full-PR) reliably predict high-cost Agentic-PRs (AUC 0.96). This enables triage policies that capture 47.4\% of wasted effort by reviewing only the top 20\% of flagged PRs.
-
-\textbf{Ans.\ to RQ2}: PRs touching CI/build files showed lower raw ghosting rates, but this effect disappears after controlling for PR size (OR 1.01, $p>0.05$). This suggests that complexity, rather than specific file types, is the primary driver of agent abandonment.
+\textbf{Summary.} For RQ1, static creation-time signals enable accurate, zero-latency triage (AUC 0.94), with a strong size-only baseline (AUC 0.93); top-20\% gating captures 82.8\% of high-cost PRs. For RQ2, ghosting concentrates in the structurally complex, non-converging tail (64.5\% of rejected PRs). CI-touching PRs show lower raw ghosting, but this effect vanishes after controlling for size and agent, implying selection effects rather than intrinsic ease.
 
 \begin{acks}
-We thank the MSR 2026 organizers for hosting the Mining Challenge. Replication package available at: [Anonymized for review].
+We thank the MSR 2026 organizers for hosting the Mining Challenge. Replication package available at: \url{https://zenodo.org/records/17993901}.
 \end{acks}
 
 \clearpage

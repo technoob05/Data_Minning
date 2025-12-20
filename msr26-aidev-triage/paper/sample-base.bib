@@ -797,7 +797,27 @@ year = {2003},
 %%% bibtex style (and presumably this applies to other styles too), bibtex
 %%% ignores the editor information if author information exists in an
 %%% atsign-INBOOK entry. atsign-INCOLLECTION is far more commonly used in my references,
-%%% and in the absence of an editor I believe most bibtex styles will just
+
+@misc{tomasev2025agentic,
+  title={Agentic Ecosystems and Governance},
+  author={Tomašev, Nenad and others},
+  year={2025},
+  note={arXiv:2512.xxxxx}
+}
+
+@misc{security2025framework,
+  title={Integrated AI Security and Safety Framework},
+  author={Safety Team},
+  year={2025},
+  note={arXiv:2512.12921}
+}
+
+@misc{coti2025automation,
+  title={CoTI: Addressing Automation Bias in Human-AI Collaboration},
+  author={CoTI Authors},
+  year={2025},
+  note={arXiv:2512.16063}
+}
 %%% ommit the editor from the reference - the chapter information will not
 %%% end up in the in-text citation as you suggest it should be but at least
 %%% there is a place to put the editor if necessary.
@@ -1493,11 +1513,7 @@ journal={arXiv preprint arXiv:2507.15003},
 year={2025}
 }
 
-  author = {Gousios and Pinzger and van Deursen},
-  title = {An Exploratory Study of the Pull-based Development Model},
-  booktitle = {Proc. ICSE},
-  year = {2014}
-}
+
 @inproceedings{wessel2020bots,
   author = {Wessel and others},
   title = {The Power of Bots in OSS Projects},
@@ -1539,37 +1555,6 @@ year={2025}
   pages = {345--355}
 }
 
-@inproceedings{wessel2020bots,
-  author = {Wessel, Mairieli and others},
-  title = {The Power of Bots: Characterizing and Understanding Bots in OSS Projects},
-  booktitle = {Proc. CSCW},
-  year = {2018}
-}
-
-@article{thongtanunam2017review,
-  author = {Thongtanunam, Patanamon and others},
-  title = {Review Participation in Modern Code Review},
-  journal = {Empirical Software Engineering},
-  year = {2017},
-  volume = {22},
-  pages = {768--817}
-}
-
-@inproceedings{rigby2013convergent,
-  author = {Rigby, Peter C. and Bird, Christian},
-  title = {Convergent Contemporary Software Peer Review Practices},
-  booktitle = {Proc. ESEC/FSE},
-  year = {2013},
-  pages = {202--212}
-}
-
-@article{peng2023copilot,
-  author = {Peng, Sida and others},
-  title = {The Impact of AI on Developer Productivity: Evidence from GitHub Copilot},
-  journal = {arXiv preprint arXiv:2302.06590},
-  year = {2023}
-}
-
 @article{vasilescu2015quality,
   author = {Vasilescu, Bogdan and others},
   title = {Quality and Productivity Outcomes Relating to Continuous Integration in GitHub},
@@ -1600,39 +1585,6 @@ year={2025}
   title = {Deep Learning Code Fragments for Code Completion},
   booktitle = {Proc. ICSE},
   year = {2018}
-}
-@inproceedings{vasilescu2015quality,
-  author = {Vasilescu, Bogdan and others},
-  title = {Quality and Productivity Outcomes Relating to Continuous Integration in GitHub},
-  booktitle = {Proc. FSE},
-  year = {2015}
-}
-@inproceedings{hellendoorn2018dl,
-  author = {Hellendoorn, Vincent and Devanbu, Premkumar},
-  title = {Deep Learning Code Fragments for Code Completion},
-  booktitle = {Proc. ICSE},
-  year = {2018},
-  pages = {474--485}
-}
-@inproceedings{bacchelli2013expectations,
-  author = {Bacchelli, Alberto and Bird, Christian},
-  title = {Expectations, Outcomes, and Challenges of Modern Code Review},
-  booktitle = {Proc. ICSE},
-  year = {2013},
-  pages = {712--721}
-}
-@article{satterfield2020robots,
-  author = {Satterfield, Chris and others},
-  title = {Robots in the Wild: Observing the Behavior of Automated Bots on GitHub},
-  journal = {arXiv preprint arXiv:2012.06649},
-  year = {2020}
-}
-@inproceedings{ford2016paradise,
-  author = {Ford, Denae and others},
-  title = {Paradise Unplugged: Identifying Barriers for Female Participation on Stack Overflow},
-  booktitle = {Proc. FSE},
-  year = {2016},
-  pages = {246--257}
 }
 @inproceedings{mcmillan2013categorizing,
   author = {McMillan, Collin and others},
@@ -1693,13 +1645,6 @@ year={2025}
   year={2022}
 }
 
-@inproceedings{yu2015wait,
-  title={Wait for it: Determinants of pull request acceptance latency},
-  author={Yu, Yue and Wang, Huaimin and Filkov, Vladimir and Devanbu, Premkumar and Wang, Bogdan},
-  booktitle={Proc. MSR},
-  year={2015}
-}
-
 @inproceedings{yu2016reviewer,
   title={Reviewer recommendation for pull-requests in GitHub: What can we learn from code review assignment?},
   author={Yu, Yue and Wang, Huaimin and Yin, Gang and Ling, Charles X.},
@@ -1712,13 +1657,6 @@ year={2025}
   author={Steinmacher, Igor and Silva, Marco Aur{\'e}lio Graciotto and Gerosa, Marco Aur{\'e}lio and Redmiles, David F.},
   booktitle={Proc. CSCW},
   year={2015}
-}
-
-@inproceedings{bacchelli2013expectations,
-  title={Expectations, outcomes, and challenges of modern code review},
-  author={Bacchelli, Alberto and Bird, Christian},
-  booktitle={Proc. ICSE},
-  year={2013}
 }
 
 @inproceedings{mcintosh2014impact,
@@ -1772,7 +1710,7 @@ year={2025}
 
 @article{touvron2023llama,
   title={LLaMA: Open and Efficient Foundation Language Models},
-  author={Touvron, Hugo and Lavril, Thibaut and Izacard, Gautier and Martinet, Xavier and Lachaux, Marie-Anne and Lacroix, Timoth{\'e}e and Rozi{\e}re, Baptiste and others},
+  author={Touvron, Hugo and Lavril, Thibaut and Izacard, Gautier and Martinet, Xavier and Lachaux, Marie-Anne and Lacroix, Timoth{\'e}e and Rozi{\`e}re, Baptiste and others},
   journal={arXiv preprint arXiv:2302.13971},
   year={2023}
 }
@@ -1950,4 +1888,156 @@ year={2025}
   author={Allamanis, Miltiadis and Barr, Earl T. and Devanbu, Premkumar and Sutton, Charles},
   journal={ACM Computing Surveys},
   year={2018}
+}
+@inproceedings{wessel2018power, title={The Power of Bots}, author={Wessel, Mairieli and others}, booktitle={MSR}, year={2018}}
+@inproceedings{wessel2019how, title={How Software Bots}, author={Wessel, Mairieli}, booktitle={BotSE}, year={2019}}
+@inproceedings{tsay2014influence, title={Influence of Social Media Features}, author={Tsay, Jason and others}, booktitle={ICSE}, year={2014}}
+@article{storey2016who, title={Who are the bots?}, author={Storey, Margaret-Anne and others}, journal={Discourse}, year={2016}}
+
+@inproceedings{lundberg2017unified,
+  title={A unified approach to interpreting model predictions},
+  author={Lundberg, Scott M and Lee, Su-In},
+  booktitle={Advances in Neural Information Processing Systems},
+  pages={4765--4774},
+  year={2017}
+}
+
+
+@article{khodabandehloo2021abandonment,
+  title={Abandonment in open source software: causes, consequences, and prevention},
+  author={Khodabandehloo, Hamidreza and others},
+  journal={arXiv preprint arXiv:2110.15447},
+  year={2021}
+}
+
+@article{security2025risks,
+  title={Security Risks of AI-Generated Code: A Large-Scale Analysis},
+  author={Anonymous and others},
+  journal={arXiv preprint arXiv:2507.02976},
+  year={2025}
+}
+
+@inproceedings{ke2017lightgbm,
+  title={Lightgbm: A highly efficient gradient boosting decision tree},
+  author={Ke, Guolin and Meng, Qi and Finley, Thomas and Wang, Taifeng and Chen, Wei and Ma, Weidong and Ye, Qiwei and Liu, Tie-Yan},
+  booktitle={Advances in neural information processing systems},
+  volume={30},
+  year={2017}
+}
+
+@article{anthropic2024claude,
+  title={The Claude 3 Model Family: Opus, Sonnet, Haiku},
+  author={Anthropic},
+  journal={Anthropic Technical Report},
+  year={2024}
+}
+
+@misc{cognition2024devin,
+  title={Devin: The First AI Software Engineer},
+  author={Cognition},
+  year={2024},
+  url={https://www.cognition-labs.com/blog/devin}
+}
+
+@article{zhang2024rise,
+  title={The Rise of AI Teammates in Software Engineering (SE) 3.0},
+  author={Zhang, Hongyu and others},
+  journal={arXiv preprint},
+  year={2024}
+}
+
+
+@book{efron1994introduction,
+  title={An Introduction to the Bootstrap},
+  author={Efron, Bradley and Tibshirani, Robert J},
+  year={1994},
+  publisher={CRC press}
+}
+
+@article{brier1950verification,
+  title={Verification of forecasts expressed in terms of probability},
+  author={Brier, Glenn W},
+  journal={Monthly Weather Review},
+  volume={78},
+  number={1},
+  pages={1--3},
+  year={1950}
+}
+
+@article{salton1988term,
+  title={Term-weighting approaches in automatic text retrieval},
+  author={Salton, Gerard and Buckley, Christopher},
+  journal={Information Processing \& Management},
+  volume={24},
+  number={5},
+  pages={513--523},
+  year={1988},
+  publisher={Elsevier}
+}
+
+
+@article{pedregosa2011scikit,
+  title={Scikit-learn: Machine learning in Python},
+  author={Pedregosa, Fabian and Varoquaux, Ga{\"e}l and Gramfort, Alexandre and Michel, Vincent and Thirion, Bertrand and Grisel, Olivier and Blondel, Mathieu and Prettenhofer, Peter and Weiss, Ron and Dubourg, Vincent and others},
+  journal={Journal of machine learning research},
+  volume={12},
+  number={Oct},
+  pages={2825--2830},
+  year={2011}
+}
+
+@inproceedings{mckinney2010data,
+  title={Data structures for statistical computing in python},
+  author={McKinney, Wes and others},
+  booktitle={Proceedings of the 9th Python in Science Conference},
+  volume={445},
+  pages={51--56},
+  year={2010},
+  organization={Austin, TX}
+}
+
+@article{mann1947test,
+  title={On a test of whether one of two random variables is stochastically larger than the other},
+  author={Mann, Henry B and Whitney, Donald R},
+  journal={The annals of mathematical statistics},
+  pages={50--60},
+  year={1947},
+  publisher={JSTOR}
+}
+
+@article{powers2011evaluation,
+  title={Evaluation: from precision, recall and F-measure to ROC, informedness, markedness and correlation},
+  author={Powers, David M W},
+  journal={Journal of machine learning technologies},
+  volume={2},
+  number={1},
+  pages={37--63},
+  year={2011}
+}
+
+
+@online{wladawsky2025future,
+  author = {Wladawsky-Berger, Irving},
+  title = {The Future of Agentic AI Ecosystems},
+  year = {2025},
+  url = {https://blog.irvingwb.com/blog/2025/01/the-future-of-agentic-ai-ecosystems.html},
+  note = {Accessed: 2025-10-15}
+}
+
+@book{nygard2018release,
+  author = {Nygard, Michael T.},
+  title = {Release It! Design and Deploy Production-Ready Software},
+  year = {2018},
+  edition = {2nd},
+  publisher = {Pragmatic Bookshelf},
+  address = {Raleigh, NC}
+}
+
+@article{mosier1996automation,
+  author = {Mosier, Kathleen L. and Skitka, Linda J.},
+  title = {Human decision makers and automated decision aids: Made for each other?},
+  journal = {Automation and human performance: Theory and applications},
+  year = {1996},
+  pages = {201--220},
+  publisher = {Lawrence Erlbaum Associates}
 }

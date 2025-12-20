@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{49}
+\begin{thebibliography}{20}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -36,14 +36,24 @@
 \providecommand\natexlab[1]{#1}
 \providecommand\showeprint[2][]{arXiv:#2}
 
-\bibitem[Allamanis et~al\mbox{.}(2018)]%
-        {allamanis2018survey}
-\bibfield{author}{\bibinfo{person}{Miltiadis Allamanis},
-  \bibinfo{person}{Earl~T. Barr}, \bibinfo{person}{Premkumar Devanbu}, {and}
-  \bibinfo{person}{Charles Sutton}.} \bibinfo{year}{2018}\natexlab{}.
-\newblock \showarticletitle{A survey of machine learning for big code and
-  naturalness}.
-\newblock \bibinfo{journal}{\emph{Comput. Surveys}}.
+\bibitem[Anonymous et~al\mbox{.}(2025)]%
+        {security2025risks}
+\bibfield{author}{\bibinfo{person}{Anonymous} {et~al\mbox{.}}}
+  \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{Security Risks of AI-Generated Code: A Large-Scale
+  Analysis}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2507.02976}}
+  (\bibinfo{year}{2025}).
+\newblock
+
+
+\bibitem[Anthropic(2024)]%
+        {anthropic2024claude}
+\bibfield{author}{\bibinfo{person}{Anthropic}.}
+  \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{The Claude 3 Model Family: Opus, Sonnet, Haiku}.
+\newblock \bibinfo{journal}{\emph{Anthropic Technical Report}}
+  (\bibinfo{year}{2024}).
 \newblock
 
 
@@ -54,26 +64,6 @@
 \newblock \showarticletitle{A practical guide for using statistical tests to
   assess randomized algorithms in software engineering}. In
   \bibinfo{booktitle}{\emph{Proc. ICSE}}.
-\newblock
-
-
-\bibitem[Austin et~al\mbox{.}(2021)]%
-        {austin2021program}
-\bibfield{author}{\bibinfo{person}{Jacob Austin}, \bibinfo{person}{Augustus
-  Odena}, \bibinfo{person}{Maxwell Nye}, \bibinfo{person}{Maarten Bosma},
-  \bibinfo{person}{Henryk Michalewski}, \bibinfo{person}{David Dohan},
-  {et~al\mbox{.}}} \bibinfo{year}{2021}\natexlab{}.
-\newblock \showarticletitle{Program Synthesis with Large Language Models}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2108.07732}}.
-\newblock
-
-
-\bibitem[Bacchelli and Bird(2013)]%
-        {bacchelli2013expectations}
-\bibfield{author}{\bibinfo{person}{Bacchelli} {and} \bibinfo{person}{Bird}.}
-  \bibinfo{year}{2013}\natexlab{}.
-\newblock \showarticletitle{Expectations, Outcomes, and Challenges of Modern
-  Code Review}. In \bibinfo{booktitle}{\emph{Proc. ICSE}}.
 \newblock
 
 
@@ -96,36 +86,15 @@
 \newblock
 
 
-\bibitem[Beyer et~al\mbox{.}(2016)]%
-        {sre2016reliability}
-\bibfield{author}{\bibinfo{person}{Betsy Beyer}, \bibinfo{person}{Chris Jones},
-  \bibinfo{person}{Jennifer Petoff}, {and} \bibinfo{person}{Niall~Richard
-  Murphy}.} \bibinfo{year}{2016}\natexlab{}.
-\newblock \showarticletitle{Site Reliability Engineering: How Google Runs
-  Production Systems}. In \bibinfo{booktitle}{\emph{O'Reilly Media, Inc.}}
-\newblock
-
-
-\bibitem[Bird et~al\mbox{.}(2009)]%
-        {bird2009promises}
-\bibfield{author}{\bibinfo{person}{Christian Bird}, \bibinfo{person}{Peter~C.
-  Rigby}, \bibinfo{person}{Earl~T. Barr}, \bibinfo{person}{David~J. Hamilton},
-  \bibinfo{person}{Daniel~M. German}, {and} \bibinfo{person}{Prem Devanbu}.}
-  \bibinfo{year}{2009}\natexlab{}.
-\newblock \showarticletitle{The promises and perils of mining git}. In
-  \bibinfo{booktitle}{\emph{Proc. MSR}}.
-\newblock
-
-
-\bibitem[Brown et~al\mbox{.}(2020)]%
-        {brown2020language}
-\bibfield{author}{\bibinfo{person}{Tom Brown}, \bibinfo{person}{Benjamin Mann},
-  \bibinfo{person}{Nick Ryder}, \bibinfo{person}{Melanie Subbiah},
-  \bibinfo{person}{Jared~D Kaplan}, \bibinfo{person}{Prafulla Dhariwal},
-  \bibinfo{person}{Arvind Neelakantan}, {et~al\mbox{.}}}
-  \bibinfo{year}{2020}\natexlab{}.
-\newblock \showarticletitle{Language Models are Few-Shot Learners}.
-\newblock \bibinfo{journal}{\emph{Proc. NeurIPS}} (\bibinfo{year}{2020}).
+\bibitem[Brier(1950)]%
+        {brier1950verification}
+\bibfield{author}{\bibinfo{person}{Glenn~W Brier}.}
+  \bibinfo{year}{1950}\natexlab{}.
+\newblock \showarticletitle{Verification of forecasts expressed in terms of
+  probability}.
+\newblock \bibinfo{journal}{\emph{Monthly Weather Review}}
+  \bibinfo{volume}{78}, \bibinfo{number}{1} (\bibinfo{year}{1950}),
+  \bibinfo{pages}{1--3}.
 \newblock
 
 
@@ -140,150 +109,48 @@
 \newblock
 
 
-\bibitem[Choetkiertikul et~al\mbox{.}(2015)]%
-        {choetkiertikul2015predicting}
-\bibfield{author}{\bibinfo{person}{Morakot Choetkiertikul},
-  \bibinfo{person}{Hoa~Khanh Dam}, \bibinfo{person}{Truong Tran}, {and}
-  \bibinfo{person}{Aditya Ghose}.} \bibinfo{year}{2015}\natexlab{}.
-\newblock \showarticletitle{Predicting the risk of acceptance of patch
-  contributions in open source projects}. In \bibinfo{booktitle}{\emph{Proc.
-  MSR}}.
+\bibitem[Cognition(2024)]%
+        {cognition2024devin}
+\bibfield{author}{\bibinfo{person}{Cognition}.}
+  \bibinfo{year}{2024}\natexlab{}.
+\newblock \bibinfo{title}{Devin: The First AI Software Engineer}.
+\newblock
+\urldef\tempurl%
+\url{https://www.cognition-labs.com/blog/devin}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Efron and Tibshirani(1994)]%
+        {efron1994introduction}
+\bibfield{author}{\bibinfo{person}{Bradley Efron} {and}
+  \bibinfo{person}{Robert~J Tibshirani}.} \bibinfo{year}{1994}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{An Introduction to the Bootstrap}}.
+\newblock \bibinfo{publisher}{CRC press}.
 \newblock
 
 
-\bibitem[Dabbish et~al\mbox{.}(2012)]%
-        {dabbish2012social}
-\bibfield{author}{\bibinfo{person}{Laura Dabbish}, \bibinfo{person}{Colleen
-  Stuart}, \bibinfo{person}{Jason Tsay}, {and} \bibinfo{person}{James
-  Herbsleb}.} \bibinfo{year}{2012}\natexlab{}.
-\newblock \showarticletitle{Social coding in GitHub: transparency and
-  collaboration in an open software repository}. In
-  \bibinfo{booktitle}{\emph{Proc. CSCW}}.
+\bibitem[Ke et~al\mbox{.}(2017)]%
+        {ke2017lightgbm}
+\bibfield{author}{\bibinfo{person}{Guolin Ke}, \bibinfo{person}{Qi Meng},
+  \bibinfo{person}{Thomas Finley}, \bibinfo{person}{Taifeng Wang},
+  \bibinfo{person}{Wei Chen}, \bibinfo{person}{Weidong Ma},
+  \bibinfo{person}{Qiwei Ye}, {and} \bibinfo{person}{Tie-Yan Liu}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Lightgbm: A highly efficient gradient boosting
+  decision tree}. In \bibinfo{booktitle}{\emph{Advances in neural information
+  processing systems}}, Vol.~\bibinfo{volume}{30}.
 \newblock
 
 
-\bibitem[Devanbu et~al\mbox{.}(2016)]%
-        {devanbu2016belief}
-\bibfield{author}{\bibinfo{person}{Prem Devanbu}, \bibinfo{person}{Thomas
-  Zimmermann}, {and} \bibinfo{person}{Christian Bird}.}
-  \bibinfo{year}{2016}\natexlab{}.
-\newblock \showarticletitle{Belief \& evidence in empirical software
-  engineering}. In \bibinfo{booktitle}{\emph{Proc. ICSE}}.
-\newblock
-
-
-\bibitem[Fried et~al\mbox{.}(2023)]%
-        {fried2023incoder}
-\bibfield{author}{\bibinfo{person}{Daniel Fried}, \bibinfo{person}{Armen
-  Aghajanyan}, \bibinfo{person}{Jessy Lin}, \bibinfo{person}{Sida Wang},
-  \bibinfo{person}{Eric Wallace}, \bibinfo{person}{Freda Shi},
-  \bibinfo{person}{Ruiqi Zhong}, {et~al\mbox{.}}}
-  \bibinfo{year}{2023}\natexlab{}.
-\newblock \showarticletitle{InCoder: A Generative Model for Code Infilling and
-  Synthesis}.
-\newblock \bibinfo{journal}{\emph{Proc. ICLR}}.
-\newblock
-
-
-\bibitem[Gousios(2013)]%
-        {gousios2016maintainer}
-\bibfield{author}{\bibinfo{person}{Georgios Gousios}.}
-  \bibinfo{year}{2013}\natexlab{}.
-\newblock \showarticletitle{The GHTorrent dataset and tool suite}. In
-  \bibinfo{booktitle}{\emph{Proc. MSR}}.
-\newblock
-
-
-\bibitem[Gousios et~al\mbox{.}(2014)]%
-        {gousios2014pr}
-\bibfield{author}{\bibinfo{person}{Georgios Gousios}, \bibinfo{person}{Martin
-  Pinzger}, {and} \bibinfo{person}{Arie van Deursen}.}
-  \bibinfo{year}{2014}\natexlab{}.
-\newblock \showarticletitle{An Exploratory Study of the Pull-based Software
-  Development Model}. In \bibinfo{booktitle}{\emph{Proc. ICSE}}.
-  \bibinfo{pages}{345--355}.
-\newblock
-
-
-\bibitem[Gousios et~al\mbox{.}(2015)]%
-        {gousios2015work}
-\bibfield{author}{\bibinfo{person}{Georgios Gousios}, \bibinfo{person}{Andy
-  Zaidman}, \bibinfo{person}{Margaret-Anne Storey}, {and} \bibinfo{person}{Arie
-  Van~Deursen}.} \bibinfo{year}{2015}\natexlab{}.
-\newblock \showarticletitle{Work practices and challenges in pull-based
-  development: The integrator's perspective}. In
-  \bibinfo{booktitle}{\emph{Proc. ICSE}}.
-\newblock
-
-
-\bibitem[Hassan(2008)]%
-        {hassan2008road}
-\bibfield{author}{\bibinfo{person}{Ahmed~E. Hassan}.}
-  \bibinfo{year}{2008}\natexlab{}.
-\newblock \showarticletitle{The road ahead for mining software repositories}.
-  In \bibinfo{booktitle}{\emph{Proc. FoSM}}.
-\newblock
-
-
-\bibitem[Hellendoorn and Devanbu(2017)]%
-        {hellendoorn2017deep}
-\bibfield{author}{\bibinfo{person}{Vincent~J. Hellendoorn} {and}
-  \bibinfo{person}{Premkumar Devanbu}.} \bibinfo{year}{2017}\natexlab{}.
-\newblock \showarticletitle{Deep learning code fragments for code completion}.
-  In \bibinfo{booktitle}{\emph{Proc. ASE}}.
-\newblock
-
-
-\bibitem[Hindle et~al\mbox{.}(2012)]%
-        {hindle2012naturalness}
-\bibfield{author}{\bibinfo{person}{Abram Hindle}, \bibinfo{person}{Earl~T
-  Barr}, \bibinfo{person}{Zhendong Su}, \bibinfo{person}{Mark Gabel}, {and}
-  \bibinfo{person}{Premkumar Devanbu}.} \bibinfo{year}{2012}\natexlab{}.
-\newblock \showarticletitle{On the naturalness of software}.
-\newblock \bibinfo{journal}{\emph{Proc. ICSE}} (\bibinfo{year}{2012}).
-\newblock
-
-
-\bibitem[Jorgensen and Shepperd(2007)]%
-        {jorgensen2007systematic}
-\bibfield{author}{\bibinfo{person}{Magne Jorgensen} {and}
-  \bibinfo{person}{Martin Shepperd}.} \bibinfo{year}{2007}\natexlab{}.
-\newblock \showarticletitle{A systematic review of software development cost
-  estimation studies}.
-\newblock \bibinfo{journal}{\emph{IEEE Transactions on Software Engineering}}
-  (\bibinfo{year}{2007}).
-\newblock
-
-
-\bibitem[Kalliamvakou et~al\mbox{.}(2014)]%
-        {kalliamvakou2014promises}
-\bibfield{author}{\bibinfo{person}{Eirini Kalliamvakou},
-  \bibinfo{person}{Georgios Gousios}, \bibinfo{person}{Kelly Blincoe},
-  \bibinfo{person}{Leif Singer}, \bibinfo{person}{Daniel~M. German}, {and}
-  \bibinfo{person}{Daniela Damian}.} \bibinfo{year}{2014}\natexlab{}.
-\newblock \showarticletitle{The promises and perils of mining GitHub}. In
-  \bibinfo{booktitle}{\emph{Proc. MSR}}.
-\newblock
-
-
-\bibitem[Kamei et~al\mbox{.}(2013)]%
-        {kamei2013large}
-\bibfield{author}{\bibinfo{person}{Yasutaka Kamei}, \bibinfo{person}{Emad
-  Shihab}, \bibinfo{person}{Bram Adams}, \bibinfo{person}{Ahmed~E. Hassan},
-  \bibinfo{person}{Audris Mockus}, \bibinfo{person}{Anand Sinha}, {and}
-  \bibinfo{person}{Naoyasu Ubayashi}.} \bibinfo{year}{2013}\natexlab{}.
-\newblock \showarticletitle{A large-scale empirical study of just-in-time
-  quality assurance}. In \bibinfo{booktitle}{\emph{Proc. ICSE}}.
-\newblock
-
-
-\bibitem[Kim et~al\mbox{.}(2008)]%
-        {kim2008classifying}
-\bibfield{author}{\bibinfo{person}{Sunghun Kim}, \bibinfo{person}{E.~James
-  Whitehead}, {and} \bibinfo{person}{Yi Zhang}.}
-  \bibinfo{year}{2008}\natexlab{}.
-\newblock \showarticletitle{Classifying software changes: Clean or buggy?}. In
-  \bibinfo{booktitle}{\emph{Proc. TSE}}.
+\bibitem[Khodabandehloo et~al\mbox{.}(2021)]%
+        {khodabandehloo2021abandonment}
+\bibfield{author}{\bibinfo{person}{Hamidreza Khodabandehloo} {et~al\mbox{.}}}
+  \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Abandonment in open source software: causes,
+  consequences, and prevention}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2110.15447}}
+  (\bibinfo{year}{2021}).
 \newblock
 
 
@@ -308,36 +175,13 @@
 \newblock
 
 
-\bibitem[Li et~al\mbox{.}(2022)]%
-        {li2022competition}
-\bibfield{author}{\bibinfo{person}{Yujia Li}, \bibinfo{person}{David Choi},
-  \bibinfo{person}{Junyoung Chung}, \bibinfo{person}{Nate Kushman},
-  \bibinfo{person}{Julian Schrittwieser}, \bibinfo{person}{R{\'e}mi Leblond},
-  \bibinfo{person}{Tom Eccles}, {et~al\mbox{.}}}
-  \bibinfo{year}{2022}\natexlab{}.
-\newblock \showarticletitle{Competition-Level Code Generation with AlphaCode}.
-\newblock \bibinfo{journal}{\emph{Science}} (\bibinfo{year}{2022}).
-\newblock
-
-
-\bibitem[McIntosh et~al\mbox{.}(2014)]%
-        {mcintosh2014impact}
-\bibfield{author}{\bibinfo{person}{Shane McIntosh}, \bibinfo{person}{Yasutaka
-  Kamei}, \bibinfo{person}{Bram Adams}, {and} \bibinfo{person}{Ahmed~E.
-  Hassan}.} \bibinfo{year}{2014}\natexlab{}.
-\newblock \showarticletitle{The impact of code review coverage and code review
-  participation on software quality evaluations}. In
-  \bibinfo{booktitle}{\emph{Proc. MSR}}.
-\newblock
-
-
-\bibitem[Mockus et~al\mbox{.}(2000)]%
-        {mockus2000case}
-\bibfield{author}{\bibinfo{person}{Audris Mockus}, \bibinfo{person}{Roy~T.
-  Fielding}, {and} \bibinfo{person}{James~D. Herbsleb}.}
-  \bibinfo{year}{2000}\natexlab{}.
-\newblock \showarticletitle{A case study of open source software development:
-  The Apache server}. In \bibinfo{booktitle}{\emph{Proc. ICSE}}.
+\bibitem[Lundberg and Lee(2017)]%
+        {lundberg2017unified}
+\bibfield{author}{\bibinfo{person}{Scott~M Lundberg} {and}
+  \bibinfo{person}{Su-In Lee}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{A unified approach to interpreting model
+  predictions}. In \bibinfo{booktitle}{\emph{Advances in Neural Information
+  Processing Systems}}. \bibinfo{pages}{4765--4774}.
 \newblock
 
 
@@ -351,107 +195,24 @@
 \newblock
 
 
-\bibitem[Rahman et~al\mbox{.}(2014)]%
-        {rahman2014characterizing}
-\bibfield{author}{\bibinfo{person}{Foyzur Rahman}, \bibinfo{person}{Asif
-  Partho}, {and} \bibinfo{person}{David Meder}.}
-  \bibinfo{year}{2014}\natexlab{}.
-\newblock \showarticletitle{Characterizing the toxic code in large software
-  systems}. In \bibinfo{booktitle}{\emph{Proc. ICSE}}.
-\newblock
-
-
-\bibitem[Rahman et~al\mbox{.}(2012)]%
-        {rahman2012recalling}
-\bibfield{author}{\bibinfo{person}{Foyzur Rahman}, \bibinfo{person}{Daryl
-  Posnett}, {and} \bibinfo{person}{Premkumar Devanbu}.}
-  \bibinfo{year}{2012}\natexlab{}.
-\newblock \showarticletitle{Recalling the imprecision of cross-project defect
-  prediction}. In \bibinfo{booktitle}{\emph{Proc. FSE}}.
-\newblock
-
-
-\bibitem[Ray et~al\mbox{.}(2014)]%
-        {ray2014large}
-\bibfield{author}{\bibinfo{person}{Baishakhi Ray}, \bibinfo{person}{Daryl
-  Posnett}, \bibinfo{person}{Vladimir Filkov}, {and} \bibinfo{person}{Premkumar
-  Devanbu}.} \bibinfo{year}{2014}\natexlab{}.
-\newblock \showarticletitle{A large scale study of programming languages and
-  code quality in github}. In \bibinfo{booktitle}{\emph{Proc. FSE}}.
-\newblock
-
-
-\bibitem[Rigby and Bird(2013)]%
-        {rigby2013convergent}
-\bibfield{author}{\bibinfo{person}{Rigby} {and} \bibinfo{person}{Bird}.}
-  \bibinfo{year}{2013}\natexlab{}.
-\newblock \showarticletitle{Convergent Contemporary Software Peer Review
-  Practices}. In \bibinfo{booktitle}{\emph{Proc. ESEC/FSE}}.
-\newblock
-
-
-\bibitem[Steinmacher et~al\mbox{.}(2015)]%
-        {steinmacher2015barriers}
-\bibfield{author}{\bibinfo{person}{Igor Steinmacher}, \bibinfo{person}{Marco
-  Aur{\'e}lio~Graciotto Silva}, \bibinfo{person}{Marco~Aur{\'e}lio Gerosa},
-  {and} \bibinfo{person}{David~F. Redmiles}.} \bibinfo{year}{2015}\natexlab{}.
-\newblock \showarticletitle{Social Barriers Faced by Newcomers Placing Their
-  First Contribution in Open Source Software Projects}. In
-  \bibinfo{booktitle}{\emph{Proc. CSCW}}.
-\newblock
-
-
-\bibitem[Storey and Zagalsky(2016)]%
-        {storey2016the}
-\bibfield{author}{\bibinfo{person}{Margaret-Anne Storey} {and}
-  \bibinfo{person}{Alexey Zagalsky}.} \bibinfo{year}{2016}\natexlab{}.
-\newblock \showarticletitle{The who, what, how, and why of software bots}. In
-  \bibinfo{booktitle}{\emph{Proc. ICSE}}.
-\newblock
-
-
-\bibitem[Thongtanunam et~al\mbox{.}(2017)]%
-        {thongtanunam2017review}
-\bibfield{author}{\bibinfo{person}{Thongtanunam} {et~al\mbox{.}}}
-  \bibinfo{year}{2017}\natexlab{}.
-\newblock \showarticletitle{Review Participation in Modern Code Review}.
-\newblock \bibinfo{journal}{\emph{Empirical Software Engineering}}
-  (\bibinfo{year}{2017}).
-\newblock
-
-
-\bibitem[Touvron et~al\mbox{.}(2023)]%
-        {touvron2023llama}
-\bibfield{author}{\bibinfo{person}{Hugo Touvron}, \bibinfo{person}{Thibaut
-  Lavril}, \bibinfo{person}{Gautier Izacard}, \bibinfo{person}{Xavier
-  Martinet}, \bibinfo{person}{Marie-Anne Lachaux},
-  \bibinfo{person}{Timoth{\'e}e Lacroix}, \bibinfo{person}{Baptiste
-  Rozi{\e}re}, {et~al\mbox{.}}} \bibinfo{year}{2023}\natexlab{}.
-\newblock \showarticletitle{LLaMA: Open and Efficient Foundation Language
-  Models}.
-\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2302.13971}}
-  (\bibinfo{year}{2023}).
-\newblock
-
-
-\bibitem[Treude et~al\mbox{.}(2011)]%
-        {treude2011programmers}
-\bibfield{author}{\bibinfo{person}{Christoph Treude}, \bibinfo{person}{Ohad
-  Barzilay}, {and} \bibinfo{person}{Margaret-Anne Storey}.}
-  \bibinfo{year}{2011}\natexlab{}.
-\newblock \showarticletitle{How do programmers ask and answer questions on the
-  web?}. In \bibinfo{booktitle}{\emph{Proc. ICSE}}.
+\bibitem[Salton and Buckley(1988)]%
+        {salton1988term}
+\bibfield{author}{\bibinfo{person}{Gerard Salton} {and}
+  \bibinfo{person}{Christopher Buckley}.} \bibinfo{year}{1988}\natexlab{}.
+\newblock \showarticletitle{Term-weighting approaches in automatic text
+  retrieval}.
+\newblock \bibinfo{journal}{\emph{Information Processing \& Management}}
+  \bibinfo{volume}{24}, \bibinfo{number}{5} (\bibinfo{year}{1988}),
+  \bibinfo{pages}{513--523}.
 \newblock
 
 
 \bibitem[Tsay et~al\mbox{.}(2014)]%
-        {tsay2014pr}
-\bibfield{author}{\bibinfo{person}{Jason Tsay}, \bibinfo{person}{Laura
-  Dabbish}, {and} \bibinfo{person}{James Herbsleb}.}
+        {tsay2014influence}
+\bibfield{author}{\bibinfo{person}{Jason Tsay} {et~al\mbox{.}}}
   \bibinfo{year}{2014}\natexlab{}.
-\newblock \showarticletitle{Influence of Social and Technical Factors for
-  Evaluating Contribution in GitHub}. In \bibinfo{booktitle}{\emph{Proc.
-  ICSE}}. \bibinfo{pages}{356--366}.
+\newblock \showarticletitle{Influence of Social Media Features}. In
+  \bibinfo{booktitle}{\emph{ICSE}}.
 \newblock
 
 
@@ -466,29 +227,6 @@
 \newblock
 
 
-\bibitem[Vasilescu et~al\mbox{.}(2015a)]%
-        {vasilescu2015quality}
-\bibfield{author}{\bibinfo{person}{Bogdan Vasilescu} {et~al\mbox{.}}}
-  \bibinfo{year}{2015}\natexlab{a}.
-\newblock \showarticletitle{Quality and Productivity Outcomes Relating to
-  Continuous Integration in GitHub}.
-\newblock \bibinfo{journal}{\emph{Proc. ESEC/FSE}} (\bibinfo{year}{2015}),
-  \bibinfo{pages}{805--816}.
-\newblock
-
-
-\bibitem[Vasilescu et~al\mbox{.}(2015b)]%
-        {vasilescu2015gender}
-\bibfield{author}{\bibinfo{person}{Bogdan Vasilescu}, \bibinfo{person}{Daryl
-  Posnett}, \bibinfo{person}{Baishakhi Ray}, \bibinfo{person}{Mark~G.J. van~den
-  Brand}, \bibinfo{person}{Alexander Serebrenik}, \bibinfo{person}{Premkumar
-  Devanbu}, {and} \bibinfo{person}{Vladimir Filkov}.}
-  \bibinfo{year}{2015}\natexlab{b}.
-\newblock \showarticletitle{Gender and tenure diversity in GitHub teams}. In
-  \bibinfo{booktitle}{\emph{Proc. CHI}}.
-\newblock
-
-
 \bibitem[Wessel et~al\mbox{.}(2018)]%
         {wessel2020bots}
 \bibfield{author}{\bibinfo{person}{Wessel} {et~al\mbox{.}}}
@@ -498,59 +236,13 @@
 \newblock
 
 
-\bibitem[Wessel et~al\mbox{.}(2019)]%
-        {store2019bot}
-\bibfield{author}{\bibinfo{person}{Mairieli Wessel}, \bibinfo{person}{Bruno~M.
-  de Souza}, \bibinfo{person}{Igor Steinmacher}, \bibinfo{person}{Igor~S.
-  Wiese}, \bibinfo{person}{Ivanilton Polato}, \bibinfo{person}{Ana~Paula
-  Chaves}, {and} \bibinfo{person}{Marco~A. Gerosa}.}
-  \bibinfo{year}{2019}\natexlab{}.
-\newblock \showarticletitle{How bots help developers on GitHub}. In
-  \bibinfo{booktitle}{\emph{Proc. ICSE}}.
-\newblock
-
-
-\bibitem[Wessel et~al\mbox{.}(2021)]%
-        {wessel2021effects}
-\bibfield{author}{\bibinfo{person}{Mairieli Wessel}, \bibinfo{person}{Alexander
-  Serebrenik}, \bibinfo{person}{Igor Wiese}, \bibinfo{person}{Igor
-  Steinmacher}, {and} \bibinfo{person}{Marco~A. Gerosa}.}
-  \bibinfo{year}{2021}\natexlab{}.
-\newblock \showarticletitle{The Effects of Adopting Code Review Bots on Pull
-  Requests to OSS Projects}. In \bibinfo{booktitle}{\emph{Proc. ICSME}}.
-\newblock
-
-
-\bibitem[Yu et~al\mbox{.}(2015)]%
-        {yu2015wait}
-\bibfield{author}{\bibinfo{person}{Yue Yu} {et~al\mbox{.}}}
-  \bibinfo{year}{2015}\natexlab{}.
-\newblock \showarticletitle{Wait For It: Determinants of Pull Request Latency
-  in GitHub}. In \bibinfo{booktitle}{\emph{Proc. MSR}}.
-\newblock
-
-
-\bibitem[Yu et~al\mbox{.}(2016)]%
-        {yu2016reviewer}
-\bibfield{author}{\bibinfo{person}{Yue Yu}, \bibinfo{person}{Huaimin Wang},
-  \bibinfo{person}{Gang Yin}, {and} \bibinfo{person}{Charles~X. Ling}.}
-  \bibinfo{year}{2016}\natexlab{}.
-\newblock \showarticletitle{Reviewer recommendation for pull-requests in
-  GitHub: What can we learn from code review assignment?}. In
-  \bibinfo{booktitle}{\emph{Proc. ICSE}}.
-\newblock
-
-
-\bibitem[Ziegler et~al\mbox{.}(2022)]%
-        {ziegler2022productivity}
-\bibfield{author}{\bibinfo{person}{Albert Ziegler}, \bibinfo{person}{Eirini
-  Kalliamvakou}, \bibinfo{person}{X.~Alice Li}, \bibinfo{person}{Andrew Rice},
-  \bibinfo{person}{Devon Rifkin}, \bibinfo{person}{Shawn Simister},
-  \bibinfo{person}{Ganesh Sitnikov}, {and} \bibinfo{person}{Edward Tehrani}.}
-  \bibinfo{year}{2022}\natexlab{}.
-\newblock \showarticletitle{Productivity assessment of neural code generation}.
-\newblock \bibinfo{journal}{\emph{Proceedings of the 6th ACM SIGPLAN
-  International Symposium on Machine Programming}} (\bibinfo{year}{2022}).
+\bibitem[Zhang et~al\mbox{.}(2024)]%
+        {zhang2024rise}
+\bibfield{author}{\bibinfo{person}{Hongyu Zhang} {et~al\mbox{.}}}
+  \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{The Rise of AI Teammates in Software Engineering
+  (SE) 3.0}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint}} (\bibinfo{year}{2024}).
 \newblock
 
 

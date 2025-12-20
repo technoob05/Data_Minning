@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+title: "Replication Package: Early-Stage Prediction of Review Effort in AI-Generated Pull Requests"
+message: "If you use this software, please cite it as below."
+type: software
+authors:
+  - family-names: Anonymous
+    given-names: ""
+    affiliation: "MSR 2026 Mining Challenge"
+repository-code: "https://zenodo.org/[TO_BE_FILLED]"
+url: "https://zenodo.org/[TO_BE_FILLED]"
+abstract: >-
+  This repository contains the replication package for the paper 
+  "Early-Stage Prediction of Review Effort in AI-Generated Pull Requests" 
+  submitted to MSR 2026 Mining Challenge. It includes code for data processing, 
+  feature engineering, model training, and all analyses presented in the paper.
+keywords:
+  - AI agents
+  - code review
+  - pull request triage
+  - machine learning
+  - software engineering
+  - ghosting
+  - LightGBM
+license: MIT
+version: 1.0.0
+date-released: "2025-12-20"

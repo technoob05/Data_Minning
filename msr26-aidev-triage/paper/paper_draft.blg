@@ -8,215 +8,91 @@ Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'wiz_functions' (item size: 4) to 6000 items.
 Database file #1: sample-base.bib
-Repeated entry---line 3083 of file sample-base.bib
- : @inproceedings{wessel2020bots
- :                              ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 3097 of file sample-base.bib
- : @article{thongtanunam2017review
- :                                ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 3115 of file sample-base.bib
- : @inproceedings{rigby2013convergent
- :                                   ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 3131 of file sample-base.bib
- : @article{peng2023copilot
- :                         ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 3207 of file sample-base.bib
- : @inproceedings{vasilescu2015quality
- :                                    ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 3233 of file sample-base.bib
- : @inproceedings{bacchelli2013expectations
- :                                         ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 3391 of file sample-base.bib
- : @inproceedings{yu2015wait
- :                          ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 3433 of file sample-base.bib
- : @inproceedings{bacchelli2013expectations
- :                                         ,
-I'm skipping whatever remains of this entry
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'wiz_functions' (item size: 4) to 9000 items.
 Reallocating 'glb_str_end' (item size: 4) to 20 items.
 Reallocating 'glb_str_ptr' (item size: 4) to 20 items.
 Reallocating 'global_strs' (item size: 1) to 4000000 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
-Warning--empty booktitle in allamanis2018survey
-Warning--no number and no volume in allamanis2018survey
-Warning--page numbers missing in both pages and numpages fields in allamanis2018survey
+Warning--no number and no volume in security2025risks
+Warning--page numbers missing in both pages and numpages fields in security2025risks
+Warning--no number and no volume in anthropic2024claude
+Warning--page numbers missing in both pages and numpages fields in anthropic2024claude
 Warning--empty publisher in arcuri2011practical
 Warning--empty address in arcuri2011practical
 Warning--page numbers missing in both pages and numpages fields in arcuri2011practical
-Warning--empty booktitle in austin2021program
-Warning--no number and no volume in austin2021program
-Warning--page numbers missing in both pages and numpages fields in austin2021program
-Warning--empty publisher in bacchelli2013expectations
-Warning--empty address in bacchelli2013expectations
-Warning--page numbers missing in both pages and numpages fields in bacchelli2013expectations
 Warning--empty publisher in barke2023grounded
 Warning--empty address in barke2023grounded
 Warning--page numbers missing in both pages and numpages fields in barke2023grounded
 Warning--empty publisher in begel2014analyze
 Warning--empty address in begel2014analyze
 Warning--page numbers missing in both pages and numpages fields in begel2014analyze
-Warning--empty publisher in sre2016reliability
-Warning--empty address in sre2016reliability
-Warning--page numbers missing in both pages and numpages fields in sre2016reliability
-Warning--empty publisher in bird2009promises
-Warning--empty address in bird2009promises
-Warning--page numbers missing in both pages and numpages fields in bird2009promises
-Warning--no number and no volume in brown2020language
-Warning--page numbers missing in both pages and numpages fields in brown2020language
 Warning--no number and no volume in chen2021codex
 Warning--page numbers missing in both pages and numpages fields in chen2021codex
-Warning--empty publisher in choetkiertikul2015predicting
-Warning--empty address in choetkiertikul2015predicting
-Warning--page numbers missing in both pages and numpages fields in choetkiertikul2015predicting
-Warning--empty publisher in dabbish2012social
-Warning--empty address in dabbish2012social
-Warning--page numbers missing in both pages and numpages fields in dabbish2012social
-Warning--empty publisher in devanbu2016belief
-Warning--empty address in devanbu2016belief
-Warning--page numbers missing in both pages and numpages fields in devanbu2016belief
-Warning--empty booktitle in fried2023incoder
-Warning--no number and no volume in fried2023incoder
-Warning--page numbers missing in both pages and numpages fields in fried2023incoder
-Warning--empty publisher in gousios2016maintainer
-Warning--empty address in gousios2016maintainer
-Warning--page numbers missing in both pages and numpages fields in gousios2016maintainer
-Warning--empty publisher in gousios2014pr
-Warning--empty address in gousios2014pr
-Warning--empty publisher in gousios2015work
-Warning--empty address in gousios2015work
-Warning--page numbers missing in both pages and numpages fields in gousios2015work
-Warning--empty publisher in hassan2008road
-Warning--empty address in hassan2008road
-Warning--page numbers missing in both pages and numpages fields in hassan2008road
-Warning--empty publisher in hellendoorn2017deep
-Warning--empty address in hellendoorn2017deep
-Warning--page numbers missing in both pages and numpages fields in hellendoorn2017deep
-Warning--no number and no volume in hindle2012naturalness
-Warning--page numbers missing in both pages and numpages fields in hindle2012naturalness
-Warning--no number and no volume in jorgensen2007systematic
-Warning--page numbers missing in both pages and numpages fields in jorgensen2007systematic
-Warning--empty publisher in kalliamvakou2014promises
-Warning--empty address in kalliamvakou2014promises
-Warning--page numbers missing in both pages and numpages fields in kalliamvakou2014promises
-Warning--empty publisher in kamei2013large
-Warning--empty address in kamei2013large
-Warning--page numbers missing in both pages and numpages fields in kamei2013large
-Warning--empty publisher in kim2008classifying
-Warning--empty address in kim2008classifying
-Warning--page numbers missing in both pages and numpages fields in kim2008classifying
+Warning--empty address in efron1994introduction
+Warning--empty publisher in ke2017lightgbm
+Warning--empty address in ke2017lightgbm
+Warning--page numbers missing in both pages and numpages fields in ke2017lightgbm
+Warning--no number and no volume in khodabandehloo2021abandonment
+Warning--page numbers missing in both pages and numpages fields in khodabandehloo2021abandonment
 Warning--no number and no volume in lebeuf2018software
 Warning--page numbers missing in both pages and numpages fields in lebeuf2018software
 Warning--no number and no volume in li2025aidev
 Warning--page numbers missing in both pages and numpages fields in li2025aidev
-Warning--no number and no volume in li2022competition
-Warning--page numbers missing in both pages and numpages fields in li2022competition
-Warning--empty publisher in mcintosh2014impact
-Warning--empty address in mcintosh2014impact
-Warning--page numbers missing in both pages and numpages fields in mcintosh2014impact
-Warning--empty publisher in mockus2000case
-Warning--empty address in mockus2000case
-Warning--page numbers missing in both pages and numpages fields in mockus2000case
+Warning--empty publisher in lundberg2017unified
+Warning--empty address in lundberg2017unified
 Warning--no number and no volume in peng2023copilot
 Warning--page numbers missing in both pages and numpages fields in peng2023copilot
-Warning--empty publisher in rahman2014characterizing
-Warning--empty address in rahman2014characterizing
-Warning--page numbers missing in both pages and numpages fields in rahman2014characterizing
-Warning--empty publisher in rahman2012recalling
-Warning--empty address in rahman2012recalling
-Warning--page numbers missing in both pages and numpages fields in rahman2012recalling
-Warning--empty publisher in ray2014large
-Warning--empty address in ray2014large
-Warning--page numbers missing in both pages and numpages fields in ray2014large
-Warning--empty publisher in rigby2013convergent
-Warning--empty address in rigby2013convergent
-Warning--page numbers missing in both pages and numpages fields in rigby2013convergent
-Warning--empty publisher in steinmacher2015barriers
-Warning--empty address in steinmacher2015barriers
-Warning--page numbers missing in both pages and numpages fields in steinmacher2015barriers
-Warning--empty publisher in storey2016the
-Warning--empty address in storey2016the
-Warning--page numbers missing in both pages and numpages fields in storey2016the
-Warning--no number and no volume in thongtanunam2017review
-Warning--page numbers missing in both pages and numpages fields in thongtanunam2017review
-Warning--no number and no volume in touvron2023llama
-Warning--page numbers missing in both pages and numpages fields in touvron2023llama
-Warning--empty publisher in treude2011programmers
-Warning--empty address in treude2011programmers
-Warning--page numbers missing in both pages and numpages fields in treude2011programmers
-Warning--empty publisher in tsay2014pr
-Warning--empty address in tsay2014pr
+Warning--empty publisher in tsay2014influence
+Warning--empty address in tsay2014influence
+Warning--page numbers missing in both pages and numpages fields in tsay2014influence
 Warning--empty publisher in vaithilingam2022usability
 Warning--empty address in vaithilingam2022usability
 Warning--page numbers missing in both pages and numpages fields in vaithilingam2022usability
-Warning--no number and no volume in vasilescu2015quality
-Warning--empty publisher in vasilescu2015gender
-Warning--empty address in vasilescu2015gender
-Warning--page numbers missing in both pages and numpages fields in vasilescu2015gender
 Warning--empty publisher in wessel2020bots
 Warning--empty address in wessel2020bots
 Warning--page numbers missing in both pages and numpages fields in wessel2020bots
-Warning--empty publisher in store2019bot
-Warning--empty address in store2019bot
-Warning--page numbers missing in both pages and numpages fields in store2019bot
-Warning--empty publisher in wessel2021effects
-Warning--empty address in wessel2021effects
-Warning--page numbers missing in both pages and numpages fields in wessel2021effects
-Warning--empty publisher in yu2015wait
-Warning--empty address in yu2015wait
-Warning--page numbers missing in both pages and numpages fields in yu2015wait
-Warning--empty publisher in yu2016reviewer
-Warning--empty address in yu2016reviewer
-Warning--page numbers missing in both pages and numpages fields in yu2016reviewer
-Warning--no number and no volume in ziegler2022productivity
-Warning--page numbers missing in both pages and numpages fields in ziegler2022productivity
-You've used 49 entries,
+Warning--no number and no volume in zhang2024rise
+Warning--page numbers missing in both pages and numpages fields in zhang2024rise
+You've used 20 entries,
             6273 wiz_defined-function locations,
-            1861 strings with 28040 characters,
-and the built_in function-call counts, 52319 in all, are:
-= -- 5789
-> -- 1994
+            1768 strings with 23004 characters,
+and the built_in function-call counts, 20567 in all, are:
+= -- 2673
+> -- 642
 < -- 0
-+ -- 712
-- -- 686
-* -- 3759
-:= -- 5090
-add.period$ -- 213
-call.type$ -- 49
-change.case$ -- 379
-chr.to.int$ -- 48
-cite$ -- 181
-duplicate$ -- 4881
-empty$ -- 3464
-format.name$ -- 853
-if$ -- 12695
-int.to.chr$ -- 3
++ -- 231
+- -- 253
+* -- 1310
+:= -- 1967
+add.period$ -- 93
+call.type$ -- 20
+change.case$ -- 124
+chr.to.int$ -- 20
+cite$ -- 60
+duplicate$ -- 1863
+empty$ -- 1332
+format.name$ -- 297
+if$ -- 5140
+int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 233
-newline$ -- 397
-num.names$ -- 342
-pop$ -- 2557
+missing$ -- 82
+newline$ -- 194
+num.names$ -- 140
+pop$ -- 871
 preamble$ -- 1
-purify$ -- 769
+purify$ -- 284
 quote$ -- 0
-skip$ -- 1668
+skip$ -- 637
 stack$ -- 0
-substring$ -- 2769
-swap$ -- 254
+substring$ -- 1211
+swap$ -- 112
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 1299
-warning$ -- 132
-while$ -- 212
+type$ -- 445
+warning$ -- 40
+while$ -- 125
 width$ -- 0
-write$ -- 889
-(There were 8 error messages)
+write$ -- 397
+(There were 40 warnings)
